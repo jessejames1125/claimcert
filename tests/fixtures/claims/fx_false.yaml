@@ -1,0 +1,11 @@
+name: fx_false
+type: bound
+intent: "Planted false claim: z is at most 2 m, but the cap only gives 3 m."
+variables:
+  z: {unit: "m", domain: real}
+assumptions:
+  fx_cap: [z]
+constants:
+  C: "2 m"
+goals:
+  - "z <= C"

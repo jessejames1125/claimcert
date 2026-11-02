@@ -1,0 +1,12 @@
+name: fx_native
+type: bound
+intent: "Hygiene fixture."
+variables:
+  z: {unit: "m", domain: real}
+assumptions:
+  fx_cap: [z]
+  fx_unused_cap: [z]
+constants:
+  C: "400 cm"
+goals:
+  - "z <= C"
