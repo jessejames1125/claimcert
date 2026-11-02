@@ -43,7 +43,7 @@ jobs:
       - run: pip install ".[test]"
       - name: Install elan
         run: |
-          curl -sSf https://raw.githubusercontent.com/leanprover/elan/e9268f8b213e09a99768befe548049c046074225/elan-init.sh -o elan-init.sh
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/227caca133724d5516bee25c2aeb3e609478f2d8/elan-init.sh -o elan-init.sh
           sh elan-init.sh -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
       - name: Download the Mathlib build cache
