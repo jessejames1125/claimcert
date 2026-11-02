@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 
+from .agent import run_agent
 from .claims import statement_block
 from .registry import lean_assumption_def, lean_assumptions
 
@@ -15,6 +16,22 @@ CYLINDER_DEF = """def CylinderFitsInSphere (r h R : ℝ) : Prop :=
 PROMPT = """You are given a Lean 4 theorem statement and the definitions it uses. Write in plain English
 exactly what the statement asserts: every variable, every hypothesis, and the conclusion. All
 numbers are in SI units. Do not guess at the author's purpose and do not judge whether it is true.
+"""
+
+
+JUDGE = """Compare a claim's intent with a plain-English reading of its formal statement. The reading was
+written by someone who never saw the intent. Answer MATCH only if a proof of the formal statement
+would establish what the intent says. Watch for different numbers or units, a weaker or reversed
+conclusion, a narrower range, hypotheses that assume the conclusion or contradict each other, and
+assumptions the intent never mentions that do the real work.
+
+Intent:
+{intent}
+
+Reading of the formal statement:
+{answer}
+
+Reply with MATCH or MISMATCH on the first line and one sentence of reasoning on the second.
 """
 
 
@@ -54,6 +71,20 @@ def audit_record(claim, reg, match: bool, by: str, notes: str) -> Path:
                                "notes": notes, "date": datetime.date.today().isoformat()}, indent=2) + "\n",
                    encoding="utf-8", newline="\n")
     return out
+
+
+def audit_agent(claim, reg, agent: str) -> tuple[bool, str]:
+    """Blind audit by two agent runs: one reads only the Lean and writes English, the other reads
+    only that English and the claim's intent. Records the outcome with by=agent."""
+    pack = audit_pack(claim, reg)
+    answer = run_agent(agent, pack.read_text(encoding="utf-8")).strip()
+    (pack.parent / "answer.md").write_text(answer + "\n", encoding="utf-8", newline="\n")
+    reply = run_agent(agent, JUDGE.format(intent=str(claim.intent).strip(), answer=answer)).strip()
+    (pack.parent / "judge.md").write_text(reply + "\n", encoding="utf-8", newline="\n")
+    match = reply.upper().startswith("MATCH")
+    reason = reply.splitlines()[1].strip() if len(reply.splitlines()) > 1 else reply
+    audit_record(claim, reg, match, "agent", reason)
+    return match, reason
 
 
 def audit_status(claim, reg) -> str:
