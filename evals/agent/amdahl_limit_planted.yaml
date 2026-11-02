@@ -1,0 +1,25 @@
+name: amdahl_limit_planted
+type: bound
+intent: A job with a 5% or larger serial fraction never speeds up more than 15 times,
+  however many workers it gets.
+variables:
+  S:
+    unit: '1'
+    domain: real
+  f:
+    unit: '1'
+    domain:
+    - '0.05'
+    - '1'
+  n:
+    unit: '1'
+    domain: positive
+assumptions:
+  amdahl:
+  - S
+  - f
+  - n
+constants:
+  C: '15'
+goals:
+- S <= C

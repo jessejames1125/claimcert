@@ -1,0 +1,31 @@
+lean_namespace: ClaimCertTranslation
+lean_module: ClaimCertTranslation.Assumptions
+assumptions:
+  - name: rate_cap
+    kind: NUMBER
+    args: {r: "s^-1"}
+    statement: "r <= Rmax"
+    constants: {Rmax: "200 s^-1"}
+    source: "illustrative value for this evaluation"
+    produced_by: "made up for this evaluation"
+  - name: budget_given
+    kind: NUMBER
+    args: {B: "s"}
+    statement: "B <= Bmax"
+    constants: {Bmax: "1 s"}
+    source: "illustrative value for this evaluation"
+    produced_by: "made up for this evaluation"
+  - name: wait_cap
+    kind: NUMBER
+    args: {w: "s"}
+    statement: "w <= Wmax"
+    constants: {Wmax: "200 ms"}
+    source: "illustrative value for this evaluation"
+    produced_by: "made up for this evaluation"
+  - name: latency_measured
+    kind: NUMBER
+    args: {l: "s"}
+    statement: "l <= Lmax"
+    constants: {Lmax: "150 ms"}
+    source: "illustrative value for this evaluation"
+    produced_by: "made up for this evaluation"

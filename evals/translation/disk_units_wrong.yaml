@@ -1,0 +1,8 @@
+name: disk_units_wrong
+type: point
+intent: A 10 GiB file fits in 10.5 GB of free disk.
+constants:
+  file: 10 GB
+  free: 10.5 GB
+goals:
+- file <= free

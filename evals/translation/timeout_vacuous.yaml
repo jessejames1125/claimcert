@@ -1,0 +1,16 @@
+name: timeout_vacuous
+type: bound
+intent: Any timeout of at least 1 second is at most 5 seconds.
+variables:
+  t:
+    unit: s
+    domain: real
+conditions:
+- t >= lo
+- t <= hi
+constants:
+  lo: 40 s
+  hi: 30 s
+  C: 5 s
+goals:
+- t <= C

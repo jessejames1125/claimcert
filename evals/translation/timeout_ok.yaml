@@ -1,0 +1,16 @@
+name: timeout_ok
+type: bound
+intent: Any timeout between 1 and 30 seconds is at most 40 seconds.
+variables:
+  t:
+    unit: s
+    domain: real
+conditions:
+- t >= lo
+- t <= hi
+constants:
+  lo: 1 s
+  hi: 30 s
+  C: 40 s
+goals:
+- t <= C

@@ -1,0 +1,14 @@
+name: latency_ok
+type: bound
+intent: If latency measures at most 150 ms, it stays within a 200 ms budget.
+variables:
+  l:
+    unit: s
+    domain: real
+assumptions:
+  latency_measured:
+  - l
+constants:
+  C: 200 ms
+goals:
+- l <= C

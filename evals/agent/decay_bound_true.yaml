@@ -1,0 +1,11 @@
+name: decay_bound_true
+type: bound
+intent: For every non-negative x, exp(-x) is at most 1 / (1 + x).
+variables:
+  x:
+    unit: '1'
+    domain: real
+conditions:
+- x >= 0
+goals:
+- exp(-x) <= 1 / (1 + x)

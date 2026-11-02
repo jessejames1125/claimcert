@@ -1,0 +1,15 @@
+name: capacity_ok
+type: bound
+intent: If the request rate is capped at 200 per second, it never exceeds 300 per
+  second.
+variables:
+  r:
+    unit: s^-1
+    domain: real
+assumptions:
+  rate_cap:
+  - r
+constants:
+  R: 300 s^-1
+goals:
+- r <= R

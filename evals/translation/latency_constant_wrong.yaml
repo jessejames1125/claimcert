@@ -1,0 +1,14 @@
+name: latency_constant_wrong
+type: bound
+intent: Measured latency stays within the 100 ms budget.
+variables:
+  l:
+    unit: s
+    domain: real
+assumptions:
+  latency_measured:
+  - l
+constants:
+  C: 1000 ms
+goals:
+- l <= C

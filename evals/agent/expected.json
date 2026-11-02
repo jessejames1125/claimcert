@@ -1,0 +1,5 @@
+{
+  "amdahl_limit_true": "true",
+  "amdahl_limit_planted": "false",
+  "decay_bound_true": "true"
+}

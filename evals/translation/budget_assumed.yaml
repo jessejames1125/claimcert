@@ -1,0 +1,14 @@
+name: budget_assumed
+type: bound
+intent: Every retry policy we ship stays under its 1 second budget.
+variables:
+  B:
+    unit: s
+    domain: real
+assumptions:
+  budget_given:
+  - B
+constants:
+  C: 1 s
+goals:
+- B <= C

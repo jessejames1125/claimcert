@@ -1,0 +1,8 @@
+lean_namespace: ClaimCertAgent
+lean_module: ClaimCertAgent.Assumptions
+assumptions:
+  - name: amdahl
+    kind: LAW
+    args: {S: "1", f: "1", n: "1"}
+    statement: "S == 1 / (f + (1 - f) / n)"
+    source: "Amdahl's law: G. Amdahl, AFIPS Conference Proceedings 30, 1967"

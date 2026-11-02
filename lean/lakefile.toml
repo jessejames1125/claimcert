@@ -21,3 +21,6 @@ name = "ClaimCertExamples"
 
 [[lean_lib]]
 name = "ClaimCertTranslation"
+
+[[lean_lib]]
+name = "ClaimCertAgent"

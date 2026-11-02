@@ -1,0 +1,14 @@
+name: budget_ok
+type: bound
+intent: If one wait is at most 200 ms, five such waits total at most 1 second.
+variables:
+  w:
+    unit: s
+    domain: real
+assumptions:
+  wait_cap:
+  - w
+constants:
+  C: 1 s
+goals:
+- 5 * w <= C

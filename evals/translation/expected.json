@@ -1,0 +1,44 @@
+{
+  "disk_units_wrong": {
+    "group": "mistranslated",
+    "error": "unit: GiB in the intent, GB in the formal claim"
+  },
+  "angle_range_wrong": {
+    "group": "mistranslated",
+    "error": "range: the formal domain stops at 1"
+  },
+  "capacity_flipped": {
+    "group": "mistranslated",
+    "error": "direction: at least in the intent, at most in the formal claim"
+  },
+  "timeout_vacuous": {
+    "group": "mistranslated",
+    "error": "vacuous: the two conditions contradict each other"
+  },
+  "budget_assumed": {
+    "group": "mistranslated",
+    "error": "circular: the assumption is the conclusion"
+  },
+  "latency_constant_wrong": {
+    "group": "mistranslated",
+    "error": "number: 100 ms in the intent, 1000 ms in the formal claim"
+  },
+  "disk_units_ok": {
+    "group": "faithful"
+  },
+  "angle_range_ok": {
+    "group": "faithful"
+  },
+  "capacity_ok": {
+    "group": "faithful"
+  },
+  "timeout_ok": {
+    "group": "faithful"
+  },
+  "budget_ok": {
+    "group": "faithful"
+  },
+  "latency_ok": {
+    "group": "faithful"
+  }
+}
