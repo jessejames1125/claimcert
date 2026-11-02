@@ -1,0 +1,8 @@
+name: initial_loss_true
+type: point
+intent: An untrained 1000-class classifier starts at a cross-entropy of at least 6.9.
+constants:
+  classes: '1000'
+  loss: '6.9'
+goals:
+- log(classes) >= loss

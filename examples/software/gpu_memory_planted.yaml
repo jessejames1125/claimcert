@@ -1,0 +1,9 @@
+name: gpu_memory_planted
+type: point
+intent: A model with 7 billion 16-bit parameters fits in 13 GiB of GPU memory.
+constants:
+  params: 7e9
+  each: 2 B
+  capacity: 13 GiB
+goals:
+- params * each <= capacity

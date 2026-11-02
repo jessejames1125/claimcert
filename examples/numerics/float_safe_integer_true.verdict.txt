@@ -1,0 +1,8 @@
+float_safe_integer_true: PASS (point) at stage kernel
+  intent: A double holds every integer up to 9e15 exactly, since 9e15 is at most 2^53.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 33.68 s

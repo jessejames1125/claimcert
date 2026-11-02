@@ -1,0 +1,15 @@
+name: id_collision_planted
+type: bound
+intent: With one billion random 64-bit request IDs, the chance of any collision is
+  at most 0.1%.
+variables:
+  P:
+    unit: '1'
+    domain: real
+assumptions:
+  birthday_union:
+  - P
+constants:
+  U: '0.001'
+goals:
+- P <= U

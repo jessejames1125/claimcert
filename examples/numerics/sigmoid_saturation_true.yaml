@@ -1,0 +1,11 @@
+name: sigmoid_saturation_true
+type: bound
+intent: For inputs from 6 to 20, the sigmoid output is at least 0.997.
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '6'
+    - '20'
+goals:
+- 1 / (1 + exp(-x)) >= 0.997

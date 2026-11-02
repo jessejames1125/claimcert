@@ -1,0 +1,9 @@
+name: timer_overflow_true
+type: point
+intent: A signed 32-bit millisecond counter runs at least 24 days before it overflows.
+constants:
+  ticks: '2147483648'
+  tick: 1 ms
+  needed: 24 day
+goals:
+- ticks * tick >= needed

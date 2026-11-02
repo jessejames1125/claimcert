@@ -1,0 +1,5 @@
+gpu_memory_planted: FAIL (point) at stage elaboration
+  intent: A model with 7 billion 16-bit parameters fits in 13 GiB of GPU memory.
+  reason: gpu_memory_planted.lean:11:58: error: unsolved goals
+          ⊢ False
+  audit: UNAUDITED   lean: 44.65 s

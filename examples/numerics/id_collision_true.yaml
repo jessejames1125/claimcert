@@ -1,0 +1,15 @@
+name: id_collision_true
+type: bound
+intent: With one billion random 64-bit request IDs, the chance of any collision is
+  at most 3%.
+variables:
+  P:
+    unit: '1'
+    domain: real
+assumptions:
+  birthday_union:
+  - P
+constants:
+  U: '0.03'
+goals:
+- P <= U

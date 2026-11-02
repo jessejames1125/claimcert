@@ -1,0 +1,4 @@
+rate_vs_size_planted: FAIL (point) at stage dimension
+  intent: A 10 MB/s link stays under the 100 MB budget.
+  reason: cannot compare T^-1 Bit^1 with Bit^1
+  audit: UNAUDITED   lean: 0.0 s

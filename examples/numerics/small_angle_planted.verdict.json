@@ -1,0 +1,30 @@
+{
+  "claim": "small_angle_planted",
+  "type": "bound",
+  "intent": "For angles up to 0.1 radians, sin x is within 0.0001 of x.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "small_angle_planted.lean:14:4: error: LeanCert recognized a univariate interval bound, but no strategy proved it within cost budget 6 (spent 5).\n\nRun `leancert?` on the same goal for the attempted strategies and detailed next steps.\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"x\",\"prop\":false,\"used\":true},{\"head\":\"Membership.mem\",\"name\":\"dom_x\",\"prop\":true,\"used\":true}],\"theorem\":\"small_angle_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 48.0,
+  "recorded": {
+    "claim_sha256": "34e3e53b68db471c215a86effd3d3d4a09a816c7aad630d47ca4fff6e8b103e2",
+    "lean_sha256": "b6596b02ebd3c9c7c2b0806586c99fa2e8e3f1275ae18aa0cb617c3bc1a8ba56",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "claim": "neutron_floor_true",
+  "type": "floor",
+  "intent": "Any solid that cuts the uncollided 14 MeV neutron flux by a factor of ten is at least 2.16 cm thick.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [
+      "flux_ge_uncollided"
+    ],
+    "FIT": [
+      "max_atom_density",
+      "max_sigma_total_14mev"
+    ],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {
+    "flux_ge_uncollided": {
+      "kind": "LAW",
+      "source": "exponential attenuation of an uncollided beam; total flux is at least the uncollided part (any reactor physics textbook)",
+      "range": null,
+      "date": null,
+      "produced_by": null
+    },
+    "max_atom_density": {
+      "kind": "FIT",
+      "source": "diamond handbook values, 3.515 g/cm^3 and 12.011 g/mol, give 1.762e23 atoms/cm^3; rounded up by hand",
+      "range": "solids at ambient pressure; diamond is taken as the ceiling, not proved to be one",
+      "date": "2026-11-02",
+      "produced_by": null
+    },
+    "max_sigma_total_14mev": {
+      "kind": "FIT",
+      "source": "UNSOURCED: round ceiling for this example; check against ENDF/B before relying on it",
+      "range": "any nuclide near 14 MeV; a round ceiling chosen for this example, not read from an evaluated library",
+      "date": "2026-11-02",
+      "produced_by": null
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_x",
+      "kind": "domain",
+      "statement": "0 < x",
+      "used": false
+    },
+    {
+      "name": "dom_N",
+      "kind": "domain",
+      "statement": "0 < N",
+      "used": true
+    },
+    {
+      "name": "dom_sigma",
+      "kind": "domain",
+      "statement": "0 < sigma",
+      "used": true
+    },
+    {
+      "name": "dom_phi0",
+      "kind": "domain",
+      "statement": "0 < phi0",
+      "used": true
+    },
+    {
+      "name": "dom_c1",
+      "kind": "condition",
+      "statement": "phi ≤ (phi0 / (10 : ℝ))",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 38.21,
+  "recorded": {
+    "claim_sha256": "dbbedcd5af6603da31428c5e5de9a31e0a523120e4d5da8c3a02e2f18a41b154",
+    "lean_sha256": "4a4443c722576f265d0f30f8036e378c436218bb8705c5682d888a35106a7ac1",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

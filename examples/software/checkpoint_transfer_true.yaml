@@ -1,0 +1,9 @@
+name: checkpoint_transfer_true
+type: point
+intent: A 10 GiB checkpoint crosses a 1 Gbit/s link in under 90 seconds.
+constants:
+  size: 10 GiB
+  rate: 1 Gbit/s
+  limit: 90 s
+goals:
+- size / rate <= limit

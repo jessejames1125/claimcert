@@ -1,0 +1,7 @@
+neutron_floor_planted: FAIL (floor) at stage elaboration
+  intent: Any solid that cuts the uncollided 14 MeV neutron flux by a factor of ten is at least 2.5 cm thick.
+  reason: neutron_floor_planted.lean:37:4: error: LeanCert recognized: closed numerical comparison
+          The statement is false.
+          Certified counterexample: opposite comparison `Real.log 10 < 1 / 40 * (177000000000000000000000000000 * (3 / 5000000000000000000000000000))`
+          LeanCert certified this opposite comparison with a checked point-enclosure proof.
+  audit: UNAUDITED   lean: 49.15 s

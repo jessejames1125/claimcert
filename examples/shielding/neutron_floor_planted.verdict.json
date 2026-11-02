@@ -1,0 +1,30 @@
+{
+  "claim": "neutron_floor_planted",
+  "type": "floor",
+  "intent": "Any solid that cuts the uncollided 14 MeV neutron flux by a factor of ten is at least 2.5 cm thick.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "neutron_floor_planted.lean:37:4: error: LeanCert recognized: closed numerical comparison\n\nThe statement is false.\n\nCertified counterexample: opposite comparison `Real.log 10 < 1 / 40 * (177000000000000000000000000000 * (3 / 5000000000000000000000000000))`\nLeanCert certified this opposite comparison with a checked point-enclosure proof.\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"x\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"N\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"sigma\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"phi0\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"phi\",\"prop\":false,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_x\",\"prop\":true,\"used\":false},{\"head\":\"LT.lt\",\"name\":\"dom_N\",\"prop\":true,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_sigma\",\"prop\":true,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_phi0\",\"prop\":true,\"used\":true},{\"head\":\"LE.le\",\"name\":\"dom_c1\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertExamples.A_flux_ge_uncollided\",\"name\":\"h_flux_ge_uncollided\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertExamples.A_max_atom_density\",\"name\":\"h_max_atom_density\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertExamples.A_max_sigma_total_14mev\",\"name\":\"h_max_sigma_total_14mev\",\"prop\":true,\"used\":true}],\"theorem\":\"neutron_floor_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 49.15,
+  "recorded": {
+    "claim_sha256": "f9b7dbfc1a30404708be04e1e39ec67d27c946ef13ad07690050594283b1db44",
+    "lean_sha256": "a8f47ba06d4838ec1fce020efde260ff71edc964a26989a9c6f2a22ec574fd44",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

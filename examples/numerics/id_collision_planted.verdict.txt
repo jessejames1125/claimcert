@@ -1,0 +1,9 @@
+id_collision_planted: FAIL (bound) at stage elaboration
+  intent: With one billion random 64-bit request IDs, the chance of any collision is at most 0.1%.
+  reason: id_collision_planted.lean:15:2: error: linarith failed to find a contradiction
+          P : ℝ
+          h_birthday_union : P ≤ 1953124998046875 / 72057594037927936
+          a✝ : 1 / 1000 < P
+          ⊢ False
+          failed
+  audit: UNAUDITED   lean: 41.6 s

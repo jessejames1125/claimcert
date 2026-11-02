@@ -1,0 +1,11 @@
+name: sigmoid_saturation_planted
+type: bound
+intent: For inputs from 6 to 20, the sigmoid output is at least 0.999.
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '6'
+    - '20'
+goals:
+- 1 / (1 + exp(-x)) >= 0.999

@@ -1,0 +1,34 @@
+{
+  "claim": "checkpoint_transfer_true",
+  "type": "point",
+  "intent": "A 10 GiB checkpoint crosses a 1 Gbit/s link in under 90 seconds.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 38.23,
+  "recorded": {
+    "claim_sha256": "79a59b995ae60969653eb4f51e299afe967dc6b75bc519ff5b2cb822aead8618",
+    "lean_sha256": "261601a8e67c033af2f05d57b5a3cbae65fd9358f38bd6be30b66264031f552e",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

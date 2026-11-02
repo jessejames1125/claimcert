@@ -1,0 +1,11 @@
+name: small_angle_planted
+type: bound
+intent: For angles up to 0.1 radians, sin x is within 0.0001 of x.
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '0'
+    - '0.1'
+goals:
+- x - sin(x) <= 0.0001

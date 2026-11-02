@@ -1,0 +1,8 @@
+name: initial_loss_planted
+type: point
+intent: An untrained 1000-class classifier starts at a cross-entropy of at least 7.
+constants:
+  classes: '1000'
+  loss: '7'
+goals:
+- log(classes) >= loss

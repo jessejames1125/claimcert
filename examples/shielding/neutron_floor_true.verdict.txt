@@ -1,0 +1,15 @@
+neutron_floor_true: PASS (floor) at stage kernel
+  intent: Any solid that cuts the uncollided 14 MeV neutron flux by a factor of ten is at least 2.16 cm thick.
+  assumptions used:
+    LAW    flux_ge_uncollided  (source: exponential attenuation of an uncollided beam; total flux is at least the uncollided part (any reactor physics textbook))
+    FIT    max_atom_density  (source: diamond handbook values, 3.515 g/cm^3 and 12.011 g/mol, give 1.762e23 atoms/cm^3; rounded up by hand; range: solids at ambient pressure; diamond is taken as the ceiling, not proved to be one)
+    FIT    max_sigma_total_14mev  (source: UNSOURCED: round ceiling for this example; check against ENDF/B before relying on it; range: any nuclide near 14 MeV; a round ceiling chosen for this example, not read from an evaluated library)
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    domain    dom_x: 0 < x  (unused)
+    domain    dom_N: 0 < N
+    domain    dom_sigma: 0 < sigma
+    domain    dom_phi0: 0 < phi0
+    condition dom_c1: phi ≤ (phi0 / (10 : ℝ))
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 38.21 s

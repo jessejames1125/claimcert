@@ -1,0 +1,7 @@
+sigmoid_saturation_planted: FAIL (bound) at stage elaboration
+  intent: For inputs from 6 to 20, the sigmoid output is at least 0.999.
+  reason: sigmoid_saturation_planted.lean:16:4: error: LeanCert recognized: univariate interval bound
+          The statement is false.
+          Certified counterexample: (1572871/262144 (≈ 6.000026))
+          At this point, the checked function value is approximately enclosed by [0.997527, 0.997527], which violates the requested comparison. The certificate uses exact rational endpoints.
+  audit: UNAUDITED   lean: 49.9 s

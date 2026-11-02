@@ -1,0 +1,9 @@
+name: timer_overflow_planted
+type: point
+intent: A signed 32-bit millisecond counter runs at least 30 days before it overflows.
+constants:
+  ticks: '2147483648'
+  tick: 1 ms
+  needed: 30 day
+goals:
+- ticks * tick >= needed

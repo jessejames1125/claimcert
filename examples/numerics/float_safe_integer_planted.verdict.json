@@ -1,0 +1,30 @@
+{
+  "claim": "float_safe_integer_planted",
+  "type": "point",
+  "intent": "A double holds every integer up to 1e16 exactly, since 1e16 is at most 2^53.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "float_safe_integer_planted.lean:11:48: error: unsolved goals\n⊢ False\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"float_safe_integer_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 28.27,
+  "recorded": {
+    "claim_sha256": "8f074eb478f86d5da2a72f10808f89213a2e76f7f1949e668301b196d6f53c6c",
+    "lean_sha256": "88e63f5f2503d3baf8f7fb99662134db4018abb33f571ac329206b65907ce509",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

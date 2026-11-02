@@ -1,0 +1,49 @@
+lean_namespace: ClaimCertExamples
+lean_module: ClaimCertExamples.Assumptions
+assumptions:
+  - name: littles_law
+    kind: LAW
+    args: {L: "1", lam: "s^-1", W: "s"}
+    statement: "L == lam * W"
+    source: "Little's law: J. D. C. Little, A Proof for the Queuing Formula L = lambda W, Operations Research 9(3), 1961"
+  - name: peak_rate
+    kind: NUMBER
+    args: {lam: "s^-1"}
+    statement: "lam <= Rmax"
+    constants: {Rmax: "200 s^-1"}
+    source: "illustrative value for this example"
+    produced_by: "a load test you would run; made up here"
+  - name: mean_latency
+    kind: NUMBER
+    args: {W: "s"}
+    statement: "W <= Wmax"
+    constants: {Wmax: "150 ms"}
+    source: "illustrative value for this example"
+    produced_by: "a load test you would run; made up here"
+  - name: birthday_union
+    kind: LAW
+    args: {P: "1"}
+    statement: "P <= n * (n - 1) / (2 * M)"
+    constants: {n: "1e9", M: "18446744073709551616"}
+    source: "union bound over n(n-1)/2 pairs of uniform random 64-bit values"
+  - name: flux_ge_uncollided
+    kind: LAW
+    args: {phi: "m^-2 s^-1", phi0: "m^-2 s^-1", N: "m^-3", sigma: "m^2", x: "m"}
+    statement: "phi >= phi0 * exp(-(N * sigma * x))"
+    source: "exponential attenuation of an uncollided beam; total flux is at least the uncollided part (any reactor physics textbook)"
+  - name: max_atom_density
+    kind: FIT
+    args: {N: "m^-3"}
+    statement: "N <= Nmax"
+    constants: {Nmax: "1.77e23 cm^-3"}
+    range: "solids at ambient pressure; diamond is taken as the ceiling, not proved to be one"
+    source: "diamond handbook values, 3.515 g/cm^3 and 12.011 g/mol, give 1.762e23 atoms/cm^3; rounded up by hand"
+    date: "2026-11-02"
+  - name: max_sigma_total_14mev
+    kind: FIT
+    args: {sigma: "m^2"}
+    statement: "sigma <= Smax"
+    constants: {Smax: "6 b"}
+    range: "any nuclide near 14 MeV; a round ceiling chosen for this example, not read from an evaluated library"
+    source: "UNSOURCED: round ceiling for this example; check against ENDF/B before relying on it"
+    date: "2026-11-02"

@@ -1,0 +1,8 @@
+name: backoff_total_true
+type: point
+intent: Five retries that double from 100 ms wait under 3.2 seconds in total.
+constants:
+  base: 100 ms
+  total: 3.2 s
+goals:
+- base * (1 + 2 + 4 + 8 + 16) <= total

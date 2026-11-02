@@ -1,0 +1,5 @@
+small_angle_planted: FAIL (bound) at stage elaboration
+  intent: For angles up to 0.1 radians, sin x is within 0.0001 of x.
+  reason: small_angle_planted.lean:14:4: error: LeanCert recognized a univariate interval bound, but no strategy proved it within cost budget 6 (spent 5).
+          Run `leancert?` on the same goal for the attempted strategies and detailed next steps.
+  audit: UNAUDITED   lean: 48.0 s

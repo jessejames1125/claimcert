@@ -1,0 +1,41 @@
+{
+  "claim": "sigmoid_saturation_true",
+  "type": "bound",
+  "intent": "For inputs from 6 to 20, the sigmoid output is at least 0.997.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_x",
+      "kind": "interval",
+      "statement": "x ∈ Set.Icc (6 : ℝ) (20 : ℝ)",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 64.1,
+  "recorded": {
+    "claim_sha256": "7a7ecb860b51057fc97ed09ab74cb2c5759cd99ea3afb39fa14fd76e1b136e26",
+    "lean_sha256": "87324f7406f103fb1983f7ff01b042c8e46cbb2fdc36425ec802e3dc7605eef3",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "claim": "timer_overflow_planted",
+  "type": "point",
+  "intent": "A signed 32-bit millisecond counter runs at least 30 days before it overflows.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "timer_overflow_planted.lean:11:59: error: unsolved goals\n⊢ False\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"timer_overflow_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 32.49,
+  "recorded": {
+    "claim_sha256": "395c722c59838e9b9c4a09274a14d34df9af60dc8ac11f58de4a32e6b7dbc22b",
+    "lean_sha256": "4dab1ac2faa545eb29703599f2af868d58be57fcac6b77198dfa02c3f9509dc9",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

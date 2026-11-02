@@ -1,0 +1,74 @@
+{
+  "claim": "inflight_requests_true",
+  "type": "bound",
+  "intent": "At a peak of 200 requests per second and 150 ms mean latency, at most 30 requests are in flight.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [
+      "littles_law"
+    ],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": [
+      "peak_rate",
+      "mean_latency"
+    ]
+  },
+  "details": {
+    "littles_law": {
+      "kind": "LAW",
+      "source": "Little's law: J. D. C. Little, A Proof for the Queuing Formula L = lambda W, Operations Research 9(3), 1961",
+      "range": null,
+      "date": null,
+      "produced_by": null
+    },
+    "peak_rate": {
+      "kind": "NUMBER",
+      "source": "illustrative value for this example",
+      "range": null,
+      "date": null,
+      "produced_by": "a load test you would run; made up here"
+    },
+    "mean_latency": {
+      "kind": "NUMBER",
+      "source": "illustrative value for this example",
+      "range": null,
+      "date": null,
+      "produced_by": "a load test you would run; made up here"
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_lam",
+      "kind": "domain",
+      "statement": "0 < lam",
+      "used": false
+    },
+    {
+      "name": "dom_W",
+      "kind": "domain",
+      "statement": "0 < W",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 39.86,
+  "recorded": {
+    "claim_sha256": "a223ee49aad64c6d1f201fdd0180134eb294b78f1c484683eb133c379f12db43",
+    "lean_sha256": "ae353bef57e54c76c526ef16f523d017c8df643465125bdf6d6437fd26b0ab13",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

@@ -1,0 +1,37 @@
+name: neutron_floor_planted
+type: floor
+intent: Any solid that cuts the uncollided 14 MeV neutron flux by a factor of ten
+  is at least 2.5 cm thick.
+variables:
+  x:
+    unit: m
+    domain: positive
+  N:
+    unit: m^-3
+    domain: positive
+  sigma:
+    unit: m^2
+    domain: positive
+  phi0:
+    unit: m^-2 s^-1
+    domain: positive
+  phi:
+    unit: m^-2 s^-1
+    domain: real
+conditions:
+- phi <= phi0 / 10
+assumptions:
+  flux_ge_uncollided:
+  - phi
+  - phi0
+  - N
+  - sigma
+  - x
+  max_atom_density:
+  - N
+  max_sigma_total_14mev:
+  - sigma
+constants:
+  F: 2.5 cm
+goals:
+- x >= F

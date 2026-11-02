@@ -1,0 +1,9 @@
+sigmoid_saturation_true: PASS (bound) at stage kernel
+  intent: For inputs from 6 to 20, the sigmoid output is at least 0.997.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    interval  dom_x: x ∈ Set.Icc (6 : ℝ) (20 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 64.1 s

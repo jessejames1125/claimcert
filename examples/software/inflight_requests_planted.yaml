@@ -1,0 +1,27 @@
+name: inflight_requests_planted
+type: bound
+intent: At a peak of 200 requests per second and 150 ms mean latency, at most 20 requests
+  are in flight.
+variables:
+  L:
+    unit: '1'
+    domain: real
+  lam:
+    unit: s^-1
+    domain: positive
+  W:
+    unit: s
+    domain: positive
+assumptions:
+  littles_law:
+  - L
+  - lam
+  - W
+  peak_rate:
+  - lam
+  mean_latency:
+  - W
+constants:
+  B: '20'
+goals:
+- L <= B

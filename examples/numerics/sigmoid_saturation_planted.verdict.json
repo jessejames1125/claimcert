@@ -1,0 +1,30 @@
+{
+  "claim": "sigmoid_saturation_planted",
+  "type": "bound",
+  "intent": "For inputs from 6 to 20, the sigmoid output is at least 0.999.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "sigmoid_saturation_planted.lean:16:4: error: LeanCert recognized: univariate interval bound\n\nThe statement is false.\n\nCertified counterexample: (1572871/262144 (≈ 6.000026))\nAt this point, the checked function value is approximately enclosed by [0.997527, 0.997527], which violates the requested comparison. The certificate uses exact rational endpoints.\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"x\",\"prop\":false,\"used\":true},{\"head\":\"Membership.mem\",\"name\":\"dom_x\",\"prop\":true,\"used\":true}],\"theorem\":\"sigmoid_saturation_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 49.9,
+  "recorded": {
+    "claim_sha256": "2ff973bdbb91b339c1e664bf19bca5915cfad3c66ec2748eae8226601b87b1eb",
+    "lean_sha256": "afac805348ac385ba280721387f502a8f5d8016938ff32c94543f602a7cea485",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

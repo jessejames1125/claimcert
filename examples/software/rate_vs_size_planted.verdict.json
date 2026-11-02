@@ -1,0 +1,30 @@
+{
+  "claim": "rate_vs_size_planted",
+  "type": "point",
+  "intent": "A 10 MB/s link stays under the 100 MB budget.",
+  "status": "FAIL",
+  "stage": "dimension",
+  "reason": "cannot compare T^-1 Bit^1 with Bit^1",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 0.0,
+  "recorded": {
+    "claim_sha256": "05056dc8e4763bf396189f3e79d3f82c7ad4c9819d0d5947e0ff5887e9078ab1",
+    "lean_sha256": null,
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

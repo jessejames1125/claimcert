@@ -1,0 +1,12 @@
+inflight_requests_true: PASS (bound) at stage kernel
+  intent: At a peak of 200 requests per second and 150 ms mean latency, at most 30 requests are in flight.
+  assumptions used:
+    LAW    littles_law  (source: Little's law: J. D. C. Little, A Proof for the Queuing Formula L = lambda W, Operations Research 9(3), 1961)
+    NUMBER peak_rate  (source: illustrative value for this example; produced by: a load test you would run; made up here)
+    NUMBER mean_latency  (source: illustrative value for this example; produced by: a load test you would run; made up here)
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    domain    dom_lam: 0 < lam  (unused)
+    domain    dom_W: 0 < W
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 39.86 s

@@ -1,0 +1,7 @@
+name: float_safe_integer_true
+type: point
+intent: A double holds every integer up to 9e15 exactly, since 9e15 is at most 2^53.
+constants:
+  limit: 9e15
+goals:
+- limit <= 2 ** 53

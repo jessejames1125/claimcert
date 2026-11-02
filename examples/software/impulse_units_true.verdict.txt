@@ -1,0 +1,8 @@
+impulse_units_true: PASS (point) at stage kernel
+  intent: A burn logged as 4.45 lbf s stays under a 20 N s limit.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 34.38 s

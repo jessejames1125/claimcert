@@ -1,0 +1,8 @@
+id_collision_true: PASS (bound) at stage kernel
+  intent: With one billion random 64-bit request IDs, the chance of any collision is at most 3%.
+  assumptions used:
+    LAW    birthday_union  (source: union bound over n(n-1)/2 pairs of uniform random 64-bit values)
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 48.0 s

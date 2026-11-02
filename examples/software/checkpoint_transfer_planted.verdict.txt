@@ -1,0 +1,5 @@
+checkpoint_transfer_planted: FAIL (point) at stage elaboration
+  intent: A 10 GiB checkpoint crosses a 1 Gbit/s link in under 80 seconds.
+  reason: checkpoint_transfer_planted.lean:11:57: error: unsolved goals
+          ⊢ False
+  audit: UNAUDITED   lean: 30.47 s

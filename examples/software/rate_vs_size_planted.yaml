@@ -1,0 +1,8 @@
+name: rate_vs_size_planted
+type: point
+intent: A 10 MB/s link stays under the 100 MB budget.
+constants:
+  link: 10 MB/s
+  budget: 100 MB
+goals:
+- link <= budget

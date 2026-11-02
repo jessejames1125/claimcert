@@ -1,0 +1,14 @@
+inflight_requests_planted: FAIL (bound) at stage elaboration
+  intent: At a peak of 200 requests per second and 150 ms mean latency, at most 20 requests are in flight.
+  reason: inflight_requests_planted.lean:19:2: error: linarith failed to find a contradiction
+          L lam W : ℝ
+          dom_lam : 0 < lam
+          dom_W : 0 < W
+          h_littles_law : L = lam * W
+          h_peak_rate : lam ≤ 200
+          h_mean_latency : W ≤ 3 / 20
+          hmul : lam * W ≤ 200 * (3 / 20)
+          a✝ : 20 < lam * W
+          ⊢ False
+          failed
+  audit: UNAUDITED   lean: 39.6 s

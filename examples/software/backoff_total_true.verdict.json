@@ -1,0 +1,34 @@
+{
+  "claim": "backoff_total_true",
+  "type": "point",
+  "intent": "Five retries that double from 100 ms wait under 3.2 seconds in total.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 29.44,
+  "recorded": {
+    "claim_sha256": "d397c40ac6da98fc7a435cd0481cfb1a9be4d9da1bad711a807f236adaab2b0a",
+    "lean_sha256": "7a8f3e7d94737f3afe3c4bf531ef480539db6b79100545bd230b2e4cd88b8b56",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "claim": "initial_loss_planted",
+  "type": "point",
+  "intent": "An untrained 1000-class classifier starts at a cross-entropy of at least 7.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "initial_loss_planted.lean:14:2: error: LeanCert recognized: closed numerical comparison\n\nThe statement is false.\n\nCertified counterexample: opposite comparison `Real.log 1000 < 7`\nLeanCert certified this opposite comparison with a checked point-enclosure proof.\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"initial_loss_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 64.01,
+  "recorded": {
+    "claim_sha256": "11842be079e709b49d48ac01974c38e6f3978b9b7b938a4be3ec0fc88c2455f9",
+    "lean_sha256": "d5ea4d853b9f69f7089c1931c98403e685253d7c821e5d3ff0e46a89f66d247b",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

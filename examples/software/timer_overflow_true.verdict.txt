@@ -1,0 +1,8 @@
+timer_overflow_true: PASS (point) at stage kernel
+  intent: A signed 32-bit millisecond counter runs at least 24 days before it overflows.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 34.99 s

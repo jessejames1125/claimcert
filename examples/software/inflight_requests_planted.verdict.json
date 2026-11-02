@@ -1,0 +1,30 @@
+{
+  "claim": "inflight_requests_planted",
+  "type": "bound",
+  "intent": "At a peak of 200 requests per second and 150 ms mean latency, at most 20 requests are in flight.",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "inflight_requests_planted.lean:19:2: error: linarith failed to find a contradiction\nL lam W : ℝ\ndom_lam : 0 < lam\ndom_W : 0 < W\nh_littles_law : L = lam * W\nh_peak_rate : lam ≤ 200\nh_mean_latency : W ≤ 3 / 20\nhmul : lam * W ≤ 200 * (3 / 20)\na✝ : 20 < lam * W\n⊢ False\nfailed\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"L\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"lam\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"W\",\"prop\":false,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_lam\",\"prop\":true,\"used\":false},{\"head\":\"LT.lt\",\"name\":\"dom_W\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertExamples.A_littles_law\",\"name\":\"h_littles_law\",\"prop\":true,\"used\":false},{\"head\":\"ClaimCertExamples.A_peak_rate\",\"name\":\"h_peak_rate\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertExamples.A_mean_latency\",\"name\":\"h_mean_latency\",\"prop\":true,\"used\":true}],\"theorem\":\"inflight_requests_planted\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 39.6,
+  "recorded": {
+    "claim_sha256": "fb6b7fd00e1001ddf0f757f8f9d2fe8e467cb6749912b079448b124453d19930",
+    "lean_sha256": "09d7d97adaef189563638539e3861fa27bde016d93cb40585971da0d4e731621",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

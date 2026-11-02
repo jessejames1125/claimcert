@@ -1,0 +1,8 @@
+name: impulse_units_true
+type: point
+intent: A burn logged as 4.45 lbf s stays under a 20 N s limit.
+constants:
+  logged: 4.45 lbf s
+  limit: 20 N s
+goals:
+- logged <= limit

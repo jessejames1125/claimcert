@@ -1,0 +1,5 @@
+timer_overflow_planted: FAIL (point) at stage elaboration
+  intent: A signed 32-bit millisecond counter runs at least 30 days before it overflows.
+  reason: timer_overflow_planted.lean:11:59: error: unsolved goals
+          ⊢ False
+  audit: UNAUDITED   lean: 32.49 s

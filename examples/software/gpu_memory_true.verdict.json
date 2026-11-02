@@ -1,0 +1,34 @@
+{
+  "claim": "gpu_memory_true",
+  "type": "point",
+  "intent": "A model with 7 billion 16-bit parameters fits in 14 GiB of GPU memory.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 33.3,
+  "recorded": {
+    "claim_sha256": "59b18503512dbb6aa4702376fb9aca9b8515c01821e4c63e59ab376c57b9070f",
+    "lean_sha256": "42b40a0b3bd9ca87a251ea30ee2f1b239023b26aa2d049e794256718d2d2c2c6",
+    "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}
