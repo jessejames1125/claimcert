@@ -71,7 +71,8 @@ def assemble(claim, reg, report: dict, seconds: float) -> dict:
 
 
 def summary_text(v: dict) -> str:
-    lines = [f"{v['claim']}: {v['status']} ({v['type']}) at stage {v['stage']}"]
+    kind = f" ({v['type']})" if v["type"] else ""
+    lines = [f"{v['claim']}: {v['status']}{kind} at stage {v['stage']}"]
     if v.get("intent"):
         lines.append(f"  intent: {v['intent'].strip()}")
     if v["status"] == "FAIL":
