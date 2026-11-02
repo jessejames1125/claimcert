@@ -157,3 +157,27 @@ def test_demo_needs_no_lean_on_the_path(monkeypatch):
     assert ok
     assert "gpu_memory_planted: FAIL" in text and "gpu_memory_true: PASS" in text
     assert "rate_vs_size_planted: FAIL (point) at stage dimension" in text
+
+
+def test_assumption_module_edited_on_disk_makes_the_record_stale(tmp_path, monkeypatch):
+    claim, root = staged(tmp_path, monkeypatch)
+    module = root / "ClaimCertTest" / "Assumptions.lean"
+    module.write_text(module.read_text(encoding="utf-8") + "\n-- edited\n", encoding="utf-8")
+    result = replay_claim(claim, REG, root)
+    assert result.state == "stale" and not result.ok and "differs from what the registry generates" in result.detail
+
+
+def test_a_pass_whose_audit_no_longer_agrees_is_stale(tmp_path, monkeypatch):
+    claim, root = staged(tmp_path, monkeypatch)
+    verdict = claim.with_suffix(".verdict.json")
+    v = json.loads(verdict.read_text(encoding="utf-8"))
+    assert v["audit"] == "UNAUDITED"
+    v["audit"] = "MATCH"  # an edit claiming an audit that never happened
+    verdict.write_text(json.dumps(v), encoding="utf-8")
+    result = replay_claim(claim, REG, root)
+    assert result.state == "stale" and "audit" in result.detail
+
+
+def test_recorded_label_says_the_proof_was_not_rechecked(tmp_path, monkeypatch):
+    claim, root = staged(tmp_path, monkeypatch)
+    assert "not re-checked" in render(replay_claim(claim, REG, root))

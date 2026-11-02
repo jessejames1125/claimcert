@@ -115,3 +115,12 @@ def test_lean_names_must_be_dotted_identifiers(tmp_path, key, value):
     data[key] = value
     with pytest.raises(RegistryError):
         load_registry(write(tmp_path, data))
+
+
+@pytest.mark.parametrize("key", ["bad key", "x)", "a.b", "1x"])
+def test_arg_and_constant_names_are_checked(tmp_path, key):
+    for field in ("args", "constants"):
+        data = base()
+        data["assumptions"][0][field] = {key: "1 m"}
+        with pytest.raises(RegistryError, match="must match"):
+            load_registry(write(tmp_path, data))

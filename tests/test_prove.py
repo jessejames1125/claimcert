@@ -136,3 +136,15 @@ def test_audit_agent_fails_closed_on_an_unclear_reply(tmp_path):
     claim = load_claim(claim_file(tmp_path), REG)
     match, _ = audit_agent(claim, REG, agent_script(tmp_path, "reading", "It looks fine to me"))
     assert match is False and audit_status(claim, REG) == "MISMATCH"
+
+
+def test_unbalanced_quote_is_a_clean_agent_error():
+    with pytest.raises(AgentError, match="could not read"):
+        run_agent('claude -p "unclosed', "hello")
+
+
+def test_windows_paths_keep_their_backslashes(monkeypatch):
+    from claimcert import agent
+    monkeypatch.setattr(agent.sys, "platform", "win32")
+    assert agent.split_command(r'"C:\Tools\my agent.exe" -p --model x') == [r"C:\Tools\my agent.exe", "-p", "--model", "x"]
+    assert agent.split_command(r"C:\Tools\agent.exe -p") == [r"C:\Tools\agent.exe", "-p"]

@@ -9,7 +9,8 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
-from .check import prepare
+from .audit import audit_status
+from .check import _module_error, prepare
 from .provenance import differences, fingerprint
 from .verdict import summary_text
 
@@ -37,9 +38,17 @@ def replay_claim(claim_path, registry_path, lake_root) -> Replayed:
     if not verdict_file.is_file():
         return Replayed(name, "missing", None, "no recorded verdict; run claimcert check")
     recorded = json.loads(verdict_file.read_text(encoding="utf-8"))
+    bad = _module_error(Path(lake_root), p.reg)
+    if bad:
+        return Replayed(name, "stale", recorded, bad)
     changed = differences(recorded.get("recorded"), fingerprint(claim_path, p.reg, lake_root))
     if changed:
         return Replayed(name, "stale", recorded, "changed since the recorded run: " + ", ".join(changed))
+    if recorded.get("status") == "PASS":
+        # check fails a claim whose audit says MISMATCH, so a recorded PASS must still agree with the audit
+        audit = audit_status(p.claim, p.reg)
+        if audit == "MISMATCH" or recorded.get("audit") != audit:
+            return Replayed(name, "stale", recorded, f"audit recorded as {recorded.get('audit')}, now {audit}")
     return Replayed(name, "recorded", recorded)
 
 
@@ -65,7 +74,8 @@ def repo_root(start=None) -> Path | None:
 def render(result: Replayed) -> str:
     if result.verdict is None:
         return f"{result.name}: {result.detail}"
-    label = {"recorded": "recorded run, files match", "live": "computed just now, no Lean needed",
+    label = {"recorded": "recorded result, not re-checked here; same files as that run",
+             "live": "computed just now, no Lean needed",
              "stale": f"STALE, do not trust: {result.detail}"}[result.state]
     date = (result.verdict.get("recorded") or {}).get("date")
     toolchain = (result.verdict.get("recorded") or {}).get("toolchain")

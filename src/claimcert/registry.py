@@ -75,6 +75,9 @@ def _load_one(raw: dict) -> Assumption:
         raise RegistryError(f"{name}: a NUMBER needs produced_by")
     if not isinstance(raw.get("args") or {}, dict) or not isinstance(raw.get("constants") or {}, dict):
         raise RegistryError(f"{name}: args and constants must be mappings")
+    for key in [*(raw.get("args") or {}), *(raw.get("constants") or {})]:
+        if not isinstance(key, str) or not NAME.fullmatch(key.lower()):
+            raise RegistryError(f"{name}: arg and constant names must match {NAME.pattern} (any case), got {key!r}")
     args = {k: si_dim(v, f"{name}.args.{k}") for k, v in (raw.get("args") or {}).items()}
     constants = {k: parse_quantity(v) for k, v in (raw.get("constants") or {}).items()}
     if set(args) & set(constants):

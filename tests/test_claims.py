@@ -165,3 +165,18 @@ def test_unquoted_constant_number(tmp_path):
     p = claim_file(tmp_path, "c_num", variables={"z": {"unit": "1", "domain": "real"}},
                    assumptions={}, constants={"C": 4})
     assert "z ≤ (4 : ℝ)" in statement_block(load_claim(p, REG), REG)
+
+
+@pytest.mark.parametrize("vname", ["c1", "c12", "dom_z", "h_fx_cap"])
+def test_variable_names_that_would_collide_with_generated_binders_are_refused(tmp_path, vname):
+    p = claim_file(tmp_path, "c_clash", variables={vname: {"unit": "m", "domain": "positive"}},
+                   conditions=[f"{vname} <= C"], assumptions={}, goals=[f"{vname} <= C"])
+    with pytest.raises(ClaimError, match="reserved"):
+        load_claim(p, REG)
+
+
+def test_header_names_the_claim_not_the_file_on_disk(tmp_path):
+    p = claim_file(tmp_path, "c_head")
+    odd = p.with_name("c_head.YAML")
+    p.rename(odd)
+    assert "from c_head.yaml;" in header(load_claim(odd, REG), REG)
