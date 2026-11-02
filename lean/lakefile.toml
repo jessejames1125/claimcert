@@ -1,0 +1,23 @@
+name = "claimcert"
+version = "0.1.0"
+defaultTargets = ["ClaimCert"]
+
+[[require]]
+name = "leancert"
+git = "https://github.com/alerad/leancert"
+rev = "v4.34.1"
+
+[[lean_lib]]
+name = "ClaimCert"
+
+[[lean_lib]]
+name = "ClaimCertTest"
+
+[[lean_lib]]
+name = "ClaimCertBench"
+
+[[lean_lib]]
+name = "ClaimCertExamples"
+
+[[lean_lib]]
+name = "ClaimCertTranslation"
