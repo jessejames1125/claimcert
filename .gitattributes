@@ -1,0 +1,2 @@
+*.lean text eol=lf
+*.yaml text eol=lf

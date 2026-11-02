@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claimcert"
+version = "0.1.0"
+description = "Check AI-written numeric claims with Lean's kernel; every pass lists the assumptions its proof used."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+dependencies = ["pyyaml>=6"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+claimcert = "claimcert.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+markers = ["lean: needs the Lean toolchain and a built Lake project (slow)"]
+testpaths = ["tests"]
