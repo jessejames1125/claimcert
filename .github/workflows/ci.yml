@@ -59,6 +59,8 @@ jobs:
         run: lake build ClaimCert ClaimCertTest ClaimCertExamples ClaimCertBench ClaimCertTranslation claimcert-verify
       - run: claimcert doctor
       - run: pytest -m lean
+      # A FAIL verdict exits 1, and some claims must fail, so the loops do not stop on it. The last
+      # step compares every re-run verdict with the status its name or expected.json fixes.
       - name: Re-run every example through the kernel
         run: |
           for claim in examples/*/*.yaml; do

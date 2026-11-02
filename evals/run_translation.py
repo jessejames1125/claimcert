@@ -50,6 +50,10 @@ def main() -> int:
         rows[name] = {"group": expected[name]["group"], "planted_error": expected[name].get("error"),
                       "kernel": verdict["status"], "stage": verdict["stage"], "audit_match": match, "reason": reason}
         print(f"{name}: kernel {verdict['status']}, audit {match}: {reason}", flush=True)
+    if not a.no_kernel:
+        # Check again so each verdict carries its audit: a MISMATCH now fails at stage audit.
+        for name in sorted(expected):
+            check_claim(SET / f"{name}.yaml", REG, ROOT / "lean")
     wrong = [r for r in rows.values() if r["group"] == "mistranslated"]
     right = [r for r in rows.values() if r["group"] == "faithful"]
     result = {"date": datetime.datetime.now(datetime.timezone.utc).date().isoformat(), "agent": a.agent, "runs": 1,

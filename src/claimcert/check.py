@@ -127,7 +127,7 @@ def check_claim(claim_path, registry_path, lake_root, timeout_s: float = 1800.0,
                    source=p.source)
     if run.status != "ok":
         stage = {"missing": "toolchain", "timeout": "timeout", "build": "build", "error": "elaboration",
-                 "kernel": "kernel"}[run.status]
+                 "kernel": "kernel", "verify": "verify"}[run.status]
         if run.status == "error" and "error: (kernel)" in run.output:
             stage = "kernel"
         return done(fail(name, stage, _scrub(run.output[-4000:], lean_file, lake_root, nonce), claim, run.seconds))

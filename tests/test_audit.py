@@ -18,7 +18,8 @@ def staged(tmp_path):
 def test_pack_hides_intent_and_shows_defs(tmp_path):
     claim = load_claim(staged(tmp_path), REG)
     text = audit_pack(claim, REG).read_text(encoding="utf-8")
-    assert "def A_fx_cap" in text and "theorem fx_pass" in text
+    assert "def A_fx_cap" in text and "theorem claim " in text
+    assert "fx_pass" not in text  # a name such as ..._wrong would give the answer away
     assert claim.intent not in text
     assert "example :" not in text
 
@@ -66,3 +67,14 @@ def test_cylinder_definition_is_the_core_one():
     from claimcert.audit import CYLINDER_DEF
     geometry = (Path(__file__).resolve().parents[1] / "lean" / "ClaimCert" / "Geometry.lean").read_text(encoding="utf-8")
     assert CYLINDER_DEF in geometry
+
+
+def test_intent_change_makes_match_stale(tmp_path):
+    p = staged(tmp_path)
+    claim = load_claim(p, REG)
+    audit_record(claim, REG, True, "agent", "matches")
+    p.write_text(p.read_text(encoding="utf-8").replace(claim.intent, "a different claim"),
+                 encoding="utf-8")
+    edited = load_claim(p, REG)
+    assert edited.intent == "a different claim"
+    assert audit_status(edited, REG) == "STALE"

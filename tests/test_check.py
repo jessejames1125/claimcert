@@ -567,3 +567,29 @@ def test_a_theorem_that_skipped_the_kernel_fails_at_replay():
     run = run_lean(LEAN_ROOT, FIX / "fx_skip.lean", "ClaimCert", 1800, nonce="n0nce", source=SKIPPED)
     assert run.status == "kernel", run.output[-2000:]
     assert "CCREPORT" not in run.output
+
+
+def test_a_verifier_that_cannot_run_is_not_called_a_kernel_rejection(tmp_path, monkeypatch):
+    from claimcert import check as chk
+    from claimcert.leanrun import LeanRun
+    monkeypatch.setattr(chk, "run_lean", lambda *a, **k: LeanRun("verify", "error: file not found", 0.1))
+    v = check_claim(stage(tmp_path, "fx_pass", "  unfold A_fx_cap at h_fx_cap\n  linarith\n"), REG, LEAN_ROOT)
+    assert v["status"] == "FAIL" and v["stage"] == "verify"
+
+
+def test_runner_tells_a_kernel_refusal_from_a_broken_verifier(tmp_path, monkeypatch):
+    from claimcert import leanrun
+
+    def fake(out):
+        def run(cmd, cwd, env, timeout):
+            if "-o" in cmd:
+                Path(cmd[cmd.index("-o") + 1]).write_bytes(b"olean")
+                return 0, ""
+            return 1, out
+        return run
+    monkeypatch.setattr(leanrun.shutil, "which", lambda x: "lake")
+    root = built_tree(tmp_path)
+    monkeypatch.setattr(leanrun, "_run", fake("(kernel) declaration type mismatch"))
+    assert leanrun.run_lean(root, root / "a.lean", "M.Assumptions", 100.0, source="-- c\n").status == "kernel"
+    monkeypatch.setattr(leanrun, "_run", fake("could not find olean"))
+    assert leanrun.run_lean(root, root / "a.lean", "M.Assumptions", 100.0, source="-- c\n").status == "verify"

@@ -33,6 +33,11 @@ def test_translation_set_replays(name):
     claim = ROOT / "evals" / "translation" / f"{name}.yaml"
     result = replay_claim(claim, ROOT / "evals" / "translation" / "registry.yaml", ROOT / "lean")
     assert result.ok, result.detail
+    # every statement is true mathematics, so the kernel passed it; the audit alone decides the verdict
+    row = json.loads((ROOT / "evals" / "results" / "translation.json").read_text(encoding="utf-8"))["rows"][name]
+    assert row["kernel"] == "PASS"
+    assert result.verdict["status"] == ("PASS" if row["audit_match"] else "FAIL")
+    assert result.verdict["status"] == "PASS" or result.verdict["stage"] == "audit"
 
 
 def test_every_true_example_has_a_planted_partner():

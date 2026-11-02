@@ -36,10 +36,11 @@ Reply with MATCH or MISMATCH on the first line and one sentence of reasoning on 
 
 
 def statement_hash(claim, reg) -> str:
-    """What an audit approved: the statement plus every definition it can reach. The generated
-    assumption module is hashed whole (check holds the module on disk to it), so any registry
-    change makes an old record STALE, as does a change to the core's cylinder definition."""
-    parts = [statement_block(claim, reg), lean_assumptions(reg)]
+    """What an audit approved: the intent, the statement and every definition it can reach. The
+    generated assumption module is hashed whole (check holds the module on disk to it), so a change
+    to the intent, the statement or the registry makes an old record STALE. The cylinder definition
+    is the copy shown to the auditor; a test holds it equal to lean/ClaimCert/Geometry.lean."""
+    parts = [str(claim.intent).strip(), statement_block(claim, reg), lean_assumptions(reg)]
     if claim.cylinder is not None:
         parts.append(CYLINDER_DEF)
     return hashlib.sha256("\n".join(parts).encode("utf-8")).hexdigest()
@@ -54,6 +55,8 @@ def audit_pack(claim, reg) -> Path:
     if claim.cylinder is not None:
         defs.append(CYLINDER_DEF)
     statement = "\n".join(l for l in statement_block(claim, reg).splitlines() if not l.startswith("example :"))
+    # The claim's name can give the answer away (a file called ..._wrong), so the reader never sees it.
+    statement = statement.replace(f"theorem {claim.name} ", "theorem claim ", 1)
     text = (PROMPT + "\n## Definitions\n\n```lean\n" + "\n".join(defs).strip() + "\n```\n\n"
             "## Statement\n\n```lean\n" + statement + " ...\n```\n")
     d = audit_dir(claim)

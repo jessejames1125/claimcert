@@ -128,7 +128,7 @@ def test_audit_agent_is_blind_and_records_a_mismatch(tmp_path):
     assert audit_status(claim, REG) == "MISMATCH"
     reader = (tmp_path / "prompt0.txt").read_text(encoding="utf-8")
     judge = (tmp_path / "prompt1.txt").read_text(encoding="utf-8")
-    assert str(claim.intent).strip() not in reader and "theorem fx_pass" in reader
+    assert str(claim.intent).strip() not in reader and "theorem claim " in reader and "fx_pass" not in reader
     assert str(claim.intent).strip() in judge and "It says z is at most 4." in judge and "theorem" not in judge
 
 

@@ -170,6 +170,9 @@ def run_lean(lake_root, lean_file, module: str, timeout_s: float, lake: str = "l
         return LeanRun("timeout", f"timed out after {timeout_s} s", time.perf_counter() - t0)
     except OSError as e:
         return LeanRun("missing", f"could not run {lake!r} in {lake_root}: {e}", time.perf_counter() - t0)
-    return LeanRun("ok" if rc == 0 else "kernel", out, time.perf_counter() - t0)
+    if rc != 0:
+        # the kernel refusing a replayed constant, or the verifier itself failing to run
+        return LeanRun("kernel" if "(kernel)" in out else "verify", out, time.perf_counter() - t0)
+    return LeanRun("ok", out, time.perf_counter() - t0)
 
 

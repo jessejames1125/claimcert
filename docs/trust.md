@@ -2,7 +2,7 @@
 
 ## What the checker enforces
 
-- Everything from the top of the Lean file to `-- CC-END` is generated from the YAML. Any edit fails the check at stage `statement`.
+- Everything from the top of the Lean file to `-- CC-END` is generated from the YAML. Any edit fails the check at stage `statement`. The `example ... := by decide` lines in that block restate the Python dimension check in Lean from the same unit table, so they guard the code that generates statements, not the table itself.
 - The assumption module a claim imports must equal what `gen-assumptions` writes from the registry. Otherwise the check fails at stage `assumptions` before Lean runs.
 - A pass needs only the axioms `propext`, `Classical.choice` and `Quot.sound`. Anything else, `sorryAx` included, fails at stage `axioms`.
 - Every hypothesis in the statement must be a variable domain, a condition from the claim, or a registered assumption. The verdict lists which assumptions the proof term really uses, read from the term by Lean, and which it dropped.
@@ -24,6 +24,7 @@ A failed claim names the stage that refused it.
 | `build` | the Lean library did not build | yes |
 | `elaboration` | Lean found no proof: a tactic failed or a goal stayed open | yes |
 | `kernel` | the kernel rejected a term, while compiling or in the replay | yes |
+| `verify` | the verifier program itself could not run | yes |
 | `axioms` | the proof depends on a non-standard axiom | yes |
 | `report` | the report line is missing or malformed | yes |
 | `audit` | a recorded audit says the statement does not match the intent | no |
@@ -55,4 +56,4 @@ It looks everywhere, comments included, and fails closed: a legitimate proof tha
 
 ## What replay does not establish
 
-`claimcert demo` and `claimcert replay` do not run Lean. They re-run the stages marked "no" above, check that the assumption module on disk is what the registry generates, check that a recorded PASS still agrees with the audit record, and confirm that the claim, proof, assumption module, core library, verifier, manifest and toolchain pin match the record. They cannot confirm the verdict's own contents. Anyone can edit a verdict file. To re-check a proof, run `claimcert check`, or read the green Lean job in CI.
+`claimcert demo` and `claimcert replay` do not run Lean. They re-run the stages marked "no" above, check that the assumption module on disk is what the registry generates, check that a recorded PASS still agrees with the audit record, and confirm that the claim, proof, assumption module, core library, verifier, manifest and toolchain pin match the record. They cannot confirm the verdict's own contents. Anyone can edit a verdict file. To re-check a proof, run `claimcert check`, or the Lean job in CI.
