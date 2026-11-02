@@ -1,0 +1,19 @@
+name: unit_planted_1
+type: floor
+intent: 'planted unit error: 4.55 m'
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 4.55 m
+goals:
+- 1 * log(10) / (n * s) >= F

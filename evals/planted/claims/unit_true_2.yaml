@@ -1,0 +1,19 @@
+name: unit_true_2
+type: floor
+intent: 2 decades need at least 9.11 cm
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 9.11 cm
+goals:
+- 2 * log(10) / (n * s) >= F

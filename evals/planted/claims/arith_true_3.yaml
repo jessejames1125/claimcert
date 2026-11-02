@@ -1,0 +1,19 @@
+name: arith_true_3
+type: floor
+intent: 3 decades need at least 13.67 cm
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 13.67 cm
+goals:
+- 3 * log(10) / (n * s) >= F

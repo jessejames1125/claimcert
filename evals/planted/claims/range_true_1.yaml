@@ -1,0 +1,20 @@
+name: range_true_1
+type: bound
+intent: y <= 11 for x in [2, 3]
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '2'
+    - '3'
+  y:
+    unit: '1'
+    domain: real
+assumptions:
+  bm_fit_linear:
+  - x
+  - y
+constants:
+  U: '11'
+goals:
+- y <= U

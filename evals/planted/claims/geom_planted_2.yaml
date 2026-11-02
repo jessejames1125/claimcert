@@ -1,0 +1,7 @@
+name: geom_planted_2
+type: fits_in_sphere
+intent: 'planted: r 6 cm < R 6.5 cm radially, but the corner with h 3 cm is outside'
+cylinder:
+  r: 6 cm
+  h: 3 cm
+  R: 6.5 cm

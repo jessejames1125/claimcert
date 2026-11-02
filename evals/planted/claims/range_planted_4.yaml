@@ -1,0 +1,20 @@
+name: range_planted_4
+type: bound
+intent: 'planted: fit used outside [1, 6]; y <= 6.5 for x in [0.5, 1.5]'
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '0.5'
+    - '1.5'
+  y:
+    unit: '1'
+    domain: real
+assumptions:
+  bm_fit_linear:
+  - x
+  - y
+constants:
+  U: '6.5'
+goals:
+- y <= U

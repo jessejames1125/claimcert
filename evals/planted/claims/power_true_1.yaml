@@ -1,0 +1,32 @@
+name: power_true_1
+type: bound
+intent: net power at least 500 kW
+variables:
+  Pnet:
+    unit: W
+    domain: real
+  Ps:
+    unit: W
+    domain: real
+  Pb:
+    unit: W
+    domain: real
+  Pc:
+    unit: W
+    domain: real
+assumptions:
+  bm_power_balance:
+  - Pnet
+  - Ps
+  - Pb
+  - Pc
+  bm_source_min:
+  - Ps
+  bm_loss_b:
+  - Pb
+  bm_loss_c:
+  - Pc
+constants:
+  L: 500 kW
+goals:
+- Pnet >= L

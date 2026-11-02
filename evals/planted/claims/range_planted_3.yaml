@@ -1,0 +1,20 @@
+name: range_planted_3
+type: bound
+intent: 'planted: fit used outside [1, 6]; y <= 23 for x in [6, 7]'
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '6'
+    - '7'
+  y:
+    unit: '1'
+    domain: real
+assumptions:
+  bm_fit_linear:
+  - x
+  - y
+constants:
+  U: '23'
+goals:
+- y <= U

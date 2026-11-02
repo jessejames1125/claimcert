@@ -1,0 +1,54 @@
+lean_namespace: ClaimCertBench
+lean_module: ClaimCertBench.Assumptions
+assumptions:
+  - name: bm_max_density
+    kind: FIT
+    args: {n: "m^-3"}
+    statement: "n <= Nmax"
+    constants: {Nmax: "1e29 m^-3"}
+    range: "synthetic survey value"
+    source: "UNSOURCED (synthetic benchmark value)"
+    date: "2026-10-13"
+  - name: bm_max_sigma
+    kind: FIT
+    args: {s: "m^2"}
+    statement: "s <= Smax"
+    constants: {Smax: "5 b"}
+    range: "synthetic survey value"
+    source: "UNSOURCED (synthetic benchmark value)"
+    date: "2026-10-13"
+  - name: bm_fit_linear
+    kind: FIT
+    args: {x: "1", y: "1"}
+    statement: "y <= 3 * x + 2"
+    valid_when: {x: ["1", "6"]}
+    range: "x in [1, 6]"
+    source: "UNSOURCED (synthetic benchmark fit)"
+    date: "2026-10-13"
+  - name: bm_power_balance
+    kind: LAW
+    args: {Pnet: "W", Ps: "W", Pb: "W", Pc: "W"}
+    statement: "Pnet == Ps - Pb - Pc"
+    source: "energy conservation (synthetic benchmark)"
+  - name: bm_source_min
+    kind: FIT
+    args: {Ps: "W"}
+    statement: "Ps >= Pmin"
+    constants: {Pmin: "1 MW"}
+    range: "synthetic"
+    source: "UNSOURCED (synthetic benchmark value)"
+    date: "2026-10-13"
+  - name: bm_loss_b
+    kind: TECH
+    args: {Pb: "W"}
+    statement: "Pb <= Bmax"
+    constants: {Bmax: "200 kW"}
+    source: "UNSOURCED (synthetic benchmark value)"
+    date: "2026-10-13"
+  - name: bm_loss_c
+    kind: TECH
+    args: {Pc: "W"}
+    statement: "Pc <= Cmax"
+    constants: {Cmax: "300 kW"}
+    source: "UNSOURCED (synthetic benchmark value)"
+    date: "2026-10-13"

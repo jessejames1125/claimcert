@@ -1,0 +1,19 @@
+name: arith_planted_1
+type: floor
+intent: 'planted: floor 5 % above the true 1-decade value'
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 4.84 cm
+goals:
+- 1 * log(10) / (n * s) >= F

@@ -1,0 +1,19 @@
+name: unit_true_1
+type: floor
+intent: 1 decades need at least 45.5 mm
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 45.5 mm
+goals:
+- 1 * log(10) / (n * s) >= F

@@ -1,0 +1,20 @@
+name: range_true_2
+type: bound
+intent: y <= 20 for x in [1, 6]
+variables:
+  x:
+    unit: '1'
+    domain:
+    - '1'
+    - '6'
+  y:
+    unit: '1'
+    domain: real
+assumptions:
+  bm_fit_linear:
+  - x
+  - y
+constants:
+  U: '20'
+goals:
+- y <= U

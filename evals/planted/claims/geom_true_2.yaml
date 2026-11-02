@@ -1,0 +1,7 @@
+name: geom_true_2
+type: fits_in_sphere
+intent: cylinder r 6 cm, h 2 cm fits in R 6.5 cm
+cylinder:
+  r: 6 cm
+  h: 2 cm
+  R: 6.5 cm

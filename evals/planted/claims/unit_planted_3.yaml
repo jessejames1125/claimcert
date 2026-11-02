@@ -1,0 +1,19 @@
+name: unit_planted_3
+type: floor
+intent: 'planted unit error: 0.1367 s'
+variables:
+  n:
+    unit: m^-3
+    domain: positive
+  s:
+    unit: m^2
+    domain: positive
+assumptions:
+  bm_max_density:
+  - n
+  bm_max_sigma:
+  - s
+constants:
+  F: 0.1367 s
+goals:
+- 3 * log(10) / (n * s) >= F
