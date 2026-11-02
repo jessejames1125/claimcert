@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="434" viewBox="0 0 880 434" role="img" aria-label="Terminal output of claimcert demo">
+<rect width="880" height="434" rx="6" fill="#16181c"/>
+<g font-family="ui-monospace,Consolas,Menlo,monospace" font-size="13" fill="#d7dae0">
+<text x="16" y="27" fill="#8fb4ff">$ claimcert demo</text>
+<text x="16" y="46"></text>
+<text x="16" y="65">Lean does not run in this mode. Results marked recorded come from a real kernel run</text>
+<text x="16" y="84">of the files in this checkout; to re-run the kernel, see claimcert doctor.</text>
+<text x="16" y="103"></text>
+<text x="16" y="122" fill="#8b919c">[recorded run, files match (2026-11-02, leanprover/lean4:v4.34.1)]</text>
+<text x="16" y="141" fill="#ff8f85">gpu_memory_planted: FAIL (point) at stage elaboration</text>
+<text x="30.4" y="160">intent: A model with 7 billion 16-bit parameters fits in 13 GiB of GPU memory.</text>
+<text x="30.4" y="179">reason: gpu_memory_planted.lean:11:58: error: unsolved goals</text>
+<text x="88" y="198">⊢ False</text>
+<text x="30.4" y="217">audit: UNAUDITED   lean: 44.65 s</text>
+<text x="16" y="236"></text>
+<text x="16" y="255" fill="#8b919c">[recorded run, files match (2026-11-02, leanprover/lean4:v4.34.1)]</text>
+<text x="16" y="274" fill="#8fdc9a">gpu_memory_true: PASS (point) at stage kernel</text>
+<text x="30.4" y="293">intent: A model with 7 billion 16-bit parameters fits in 14 GiB of GPU memory.</text>
+<text x="30.4" y="312">assumptions used:</text>
+<text x="44.8" y="331">none</text>
+<text x="30.4" y="350">unused, dropped: none</text>
+<text x="30.4" y="369">premises from the claim: none</text>
+<text x="30.4" y="388">axioms: Classical.choice, Quot.sound, propext</text>
+<text x="30.4" y="407">audit: UNAUDITED   lean: 33.3 s</text>
+</g>
+</svg>
