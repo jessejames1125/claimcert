@@ -1,0 +1,26 @@
+lean_namespace: ClaimCertTest
+lean_module: ClaimCertTest.Assumptions
+assumptions:
+  - name: fx_cap
+    kind: FIT
+    args: {z: "m"}
+    statement: "z <= Zmax"
+    constants: {Zmax: "300 cm"}
+    range: "test fixture"
+    source: "UNSOURCED (test fixture)"
+    date: "2026-10-13"
+  - name: fx_unused_cap
+    kind: TECH
+    args: {z: "m"}
+    statement: "z <= Zcap"
+    constants: {Zcap: "10 m"}
+    source: "UNSOURCED (test fixture)"
+    date: "2026-10-13"
+  - name: fx_fit_linear
+    kind: FIT
+    args: {u: "1", w: "1"}
+    statement: "w <= 3 * u + 2"
+    valid_when: {u: ["1", "6"]}
+    range: "u in [1, 6]"
+    source: "UNSOURCED (test fixture)"
+    date: "2026-10-13"
