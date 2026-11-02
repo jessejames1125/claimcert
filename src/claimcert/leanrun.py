@@ -81,6 +81,22 @@ def _run(cmd: list[str], cwd: Path, env: dict, timeout: float) -> tuple[int, str
     return p.returncode, out + err
 
 
+def is_built(lake_root, module: str) -> bool:
+    """True when every Lean file a claim imports from this repo has an olean at least as new as its
+    source. A `lake build` with nothing to do still walks every Mathlib module (168 s measured on
+    Windows), so it runs only when something changed. Mathlib and LeanCert are pinned by the manifest."""
+    lake_root = Path(lake_root)
+    lib = lake_root / ".lake" / "build" / "lib" / "lean"
+    names = [module, "ClaimCert", *(f"ClaimCert.{p.stem}" for p in (lake_root / "ClaimCert").glob("*.lean"))]
+    for name in names:
+        parts = name.split(".")
+        source = lake_root.joinpath(*parts).with_suffix(".lean")
+        olean = lib.joinpath(*parts).with_suffix(".olean")
+        if not source.is_file() or not olean.is_file() or olean.stat().st_mtime < source.stat().st_mtime:
+            return False
+    return True
+
+
 def run_lean(lake_root, lean_file, module: str, timeout_s: float, lake: str = "lake",
              nonce: str = "") -> LeanRun:
     exe = shutil.which(lake)
@@ -94,9 +110,10 @@ def run_lean(lake_root, lean_file, module: str, timeout_s: float, lake: str = "l
         return max(timeout_s - (time.perf_counter() - t0), 0.001)
 
     try:
-        rc, out = _run([exe, "build", module], Path(lake_root), env, left())
-        if rc != 0:
-            return LeanRun("build", out, time.perf_counter() - t0)
+        if not is_built(lake_root, module):
+            rc, out = _run([exe, "build", module], Path(lake_root), env, left())
+            if rc != 0:
+                return LeanRun("build", out, time.perf_counter() - t0)
         rc, out = _run([exe, "env", "lean", str(Path(lean_file).resolve())], Path(lake_root), env, left())
     except subprocess.TimeoutExpired:
         return LeanRun("timeout", f"timed out after {timeout_s} s", time.perf_counter() - t0)
