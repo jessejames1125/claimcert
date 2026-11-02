@@ -76,7 +76,8 @@ def summary_text(v: dict) -> str:
     if v.get("intent"):
         lines.append(f"  intent: {v['intent'].strip()}")
     if v["status"] == "FAIL":
-        lines.append(f"  reason: {v['reason'][-1500:]}")
+        reason = [l for l in v["reason"][-1500:].splitlines() if l.strip() and "CCREPORT" not in l]
+        lines.append("  reason: " + "\n          ".join(reason))
     else:
         lines.append("  assumptions used:")
         any_used = False
