@@ -76,3 +76,30 @@ def test_low_free_memory_alone_is_not_missing(tmp_path, monkeypatch):
 def test_doctor_names_the_verifier(tmp_path):
     rows = {r.name: r for r in diagnose(repo(tmp_path), which=lambda _: None)}
     assert rows["verifier"].ok is False and "claimcert setup" in rows["verifier"].detail
+
+
+def test_setup_retries_a_failed_build_once(tmp_path, monkeypatch, capsys):
+    import subprocess
+    from types import SimpleNamespace
+    from claimcert import doctor
+    codes = iter([0, 1, 0])
+    calls = []
+
+    def fake(cmd, cwd):
+        calls.append(cmd[1:])
+        return SimpleNamespace(returncode=next(codes))
+    monkeypatch.setattr(doctor.shutil, "which", lambda _: "lake")
+    monkeypatch.setattr(subprocess, "run", fake)
+    assert setup(repo(tmp_path)) == 0
+    assert [c[0] for c in calls] == ["exe", "build", "build"]
+    assert "retrying the build once" in capsys.readouterr().out
+
+
+def test_setup_gives_up_after_the_second_failed_build(tmp_path, monkeypatch):
+    import subprocess
+    from types import SimpleNamespace
+    from claimcert import doctor
+    codes = iter([0, 1, 1])
+    monkeypatch.setattr(doctor.shutil, "which", lambda _: "lake")
+    monkeypatch.setattr(subprocess, "run", lambda cmd, cwd: SimpleNamespace(returncode=next(codes)))
+    assert setup(repo(tmp_path)) == 1

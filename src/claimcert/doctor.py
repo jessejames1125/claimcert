@@ -108,10 +108,16 @@ def setup(root: Path, lake: str = "lake") -> int:
         print(f"{lake} not found; install elan from https://lean-lang.org/install/", file=sys.stderr)
         return 2
     for step in (["exe", "cache", "get"], ["build", "ClaimCert", VERIFY]):
-        started = time.perf_counter()
-        print(f"$ lake {' '.join(step)}", flush=True)
-        code = subprocess.run([exe, *step], cwd=root / "lean").returncode
-        print(f"lake {' '.join(step)}: exit {code} after {time.perf_counter() - started:.0f} s", flush=True)
+        for attempt in (1, 2):
+            started = time.perf_counter()
+            print(f"$ lake {' '.join(step)}", flush=True)
+            code = subprocess.run([exe, *step], cwd=root / "lean").returncode
+            print(f"lake {' '.join(step)}: exit {code} after {time.perf_counter() - started:.0f} s", flush=True)
+            if code == 0 or step[0] != "build" or attempt == 2:
+                break
+            # Measured on a 16 GB laptop: parallel jobs ran out of memory and failed to read Mathlib
+            # files; the second build kept what the first finished and completed.
+            print("retrying the build once: it can fail to read Mathlib files when memory runs short", flush=True)
         if code != 0:
             return code
     return 0
