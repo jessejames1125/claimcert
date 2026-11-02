@@ -1,0 +1,10 @@
+timeout_ok: PASS (bound) at stage kernel
+  intent: Any timeout between 1 and 30 seconds is at most 40 seconds.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    condition dom_c1: t ≥ (1 : ℝ)  (unused)
+    condition dom_c2: t ≤ (30 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 58.04 s

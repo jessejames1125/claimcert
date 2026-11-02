@@ -1,0 +1,41 @@
+{
+  "claim": "angle_range_wrong",
+  "type": "bound",
+  "intent": "For every x from 0 to 2, x - sin x is at most 0.2.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_x",
+      "kind": "interval",
+      "statement": "x ∈ Set.Icc (0 : ℝ) (1 : ℝ)",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 100.82,
+  "recorded": {
+    "claim_sha256": "0dace604c7d7f00e0a39ee877109cb6aae01118d40322aabf5cdfbe210af956a",
+    "lean_sha256": "377947c51cdc84bd026bc95d222dda9bf07a69a987f34bd9a614170daa5483f5",
+    "assumptions_sha256": "169f39e0ba7cc7300776a2ae3809b9e089232eacff3d26017fee14ccd59a4548",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

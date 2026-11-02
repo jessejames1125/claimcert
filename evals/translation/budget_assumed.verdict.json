@@ -1,0 +1,44 @@
+{
+  "claim": "budget_assumed",
+  "type": "bound",
+  "intent": "Every retry policy we ship stays under its 1 second budget.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": [
+      "budget_given"
+    ]
+  },
+  "details": {
+    "budget_given": {
+      "kind": "NUMBER",
+      "source": "illustrative value for this evaluation",
+      "range": null,
+      "date": null,
+      "produced_by": "made up for this evaluation"
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 83.57,
+  "recorded": {
+    "claim_sha256": "0c5ee73e6ffdfdb614d8a68a9c4575753032e1708d1a526f58ecf75a9ae07b57",
+    "lean_sha256": "74956f9ae229aeb47455db9e130e67178d8c28bfa36e970d202be6b97439b938",
+    "assumptions_sha256": "169f39e0ba7cc7300776a2ae3809b9e089232eacff3d26017fee14ccd59a4548",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

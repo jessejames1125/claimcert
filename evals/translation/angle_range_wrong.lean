@@ -11,7 +11,7 @@ theorem angle_range_wrong (x : ℝ) (dom_x : x ∈ Set.Icc (0 : ℝ) (1 : ℝ)) 
     (x - (Real.sin x)) ≤ (1 / 5 : ℝ) := by
 -- CC-END
   have key : ∀ x ∈ Set.Icc (0 : ℝ) (1 : ℝ), x - Real.sin x ≤ (1 / 5 : ℝ) := by
-    leancert
+    leancert (subdivisions := 8)
   exact key x dom_x
 
 #cc_report angle_range_wrong

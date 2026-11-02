@@ -1,0 +1,34 @@
+{
+  "claim": "disk_units_wrong",
+  "type": "point",
+  "intent": "A 10 GiB file fits in 10.5 GB of free disk.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 64.39,
+  "recorded": {
+    "claim_sha256": "2c2d7789c0ccd86ffc664f8cf8424c491d7314c9dfc15cc1766ae1199a56ede6",
+    "lean_sha256": "ef8bfc9a0d8659635233e0615672da6851741c97b713a6324959fca39fc653e9",
+    "assumptions_sha256": "169f39e0ba7cc7300776a2ae3809b9e089232eacff3d26017fee14ccd59a4548",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

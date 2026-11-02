@@ -1,0 +1,8 @@
+capacity_ok: PASS (bound) at stage kernel
+  intent: If the request rate is capped at 200 per second, it never exceeds 300 per second.
+  assumptions used:
+    NUMBER rate_cap  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 55.44 s

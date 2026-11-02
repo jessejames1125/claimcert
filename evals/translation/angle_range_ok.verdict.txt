@@ -1,0 +1,9 @@
+angle_range_ok: PASS (bound) at stage kernel
+  intent: For every x from 0 to 1, x - sin x is at most 0.2.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    interval  dom_x: x ∈ Set.Icc (0 : ℝ) (1 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: MATCH   lean: 110.12 s

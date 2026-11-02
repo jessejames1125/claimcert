@@ -1,0 +1,47 @@
+{
+  "claim": "timeout_vacuous",
+  "type": "bound",
+  "intent": "Any timeout of at least 1 second is at most 5 seconds.",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_c1",
+      "kind": "condition",
+      "statement": "t ≥ (40 : ℝ)",
+      "used": true
+    },
+    {
+      "name": "dom_c2",
+      "kind": "condition",
+      "statement": "t ≤ (30 : ℝ)",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 59.8,
+  "recorded": {
+    "claim_sha256": "bd546c69efff8948dc47691f409e6d3de5df7e184d23f9cc502433709948c5e4",
+    "lean_sha256": "02d8a60193f82209fd2073994635a2c82144a6ebd808be0cfc50520d445b9891",
+    "assumptions_sha256": "169f39e0ba7cc7300776a2ae3809b9e089232eacff3d26017fee14ccd59a4548",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

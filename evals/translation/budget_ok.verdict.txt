@@ -1,0 +1,8 @@
+budget_ok: PASS (bound) at stage kernel
+  intent: If one wait is at most 200 ms, five such waits total at most 1 second.
+  assumptions used:
+    NUMBER wait_cap  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 75.38 s

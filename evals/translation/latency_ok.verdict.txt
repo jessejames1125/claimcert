@@ -1,0 +1,8 @@
+latency_ok: PASS (bound) at stage kernel
+  intent: If latency measures at most 150 ms, it stays within a 200 ms budget.
+  assumptions used:
+    NUMBER latency_measured  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 55.49 s

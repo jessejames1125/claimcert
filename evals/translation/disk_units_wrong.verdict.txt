@@ -1,0 +1,8 @@
+disk_units_wrong: PASS (point) at stage kernel
+  intent: A 10 GiB file fits in 10.5 GB of free disk.
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 64.39 s

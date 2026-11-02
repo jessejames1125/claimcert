@@ -1,0 +1,8 @@
+latency_constant_wrong: PASS (bound) at stage kernel
+  intent: Measured latency stays within the 100 ms budget.
+  assumptions used:
+    NUMBER latency_measured  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 55.82 s
