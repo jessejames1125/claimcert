@@ -1,8 +1,4 @@
-disk_units_ok: PASS (point) at stage kernel
+disk_units_ok: FAIL (point) at stage audit
   intent: A 10 GiB file fits in 11 GB of free disk.
-  assumptions used:
-    none
-  unused, dropped: none
-  premises from the claim: none
-  axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 55.04 s
+  reason: the faithfulness audit found the statement does not say what the intent says
+  audit: MISMATCH   lean: 0.0 s

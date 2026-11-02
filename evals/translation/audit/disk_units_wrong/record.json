@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "312fa818bd2f1b55b8124e071a1266a811c6bce54e2daf73bf9f2e3161a8f153",
+  "audit_sha256": "162b9289ce289cc49f2bcf944482c8fd182abb9daa955cb6e48f1bb96598636f",
   "match": false,
   "by": "agent",
-  "notes": "The intent compares 10 GiB (\u224810.74 GB) against 10.5 GB, which is false, since 10 GiB exceeds 10.5 GB. The formal statement instead checks 8\u00d710\u00b9\u2070 \u2264 8.4\u00d710\u00b9\u2070, which is true. Its numbers correspond to 10 GB and 10.5 GB in bits, so it drops the GiB-to-GB conversion that makes the intent's claim fail.",
+  "notes": "The intent says a 10 GiB file (about 10.74\u00d710\u2079 bytes) fits in 10.5 GB of free disk, but the formal statement compares 8\u00d710\u00b9\u2070 to 8.4\u00d710\u00b9\u2070, which is a different pair of numbers (these look like bit counts, 10 GB\u00d78 and 10.5 GB\u00d78, rather than 10 GiB and 10.5 GB) and so does not capture the GiB-to-GB conversion that the claim depends on.",
   "date": "2026-11-02"
 }

@@ -1,9 +1,4 @@
-angle_range_wrong: PASS (bound) at stage kernel
+angle_range_wrong: FAIL (bound) at stage audit
   intent: For every x from 0 to 2, x - sin x is at most 0.2.
-  assumptions used:
-    none
-  unused, dropped: none
-  premises from the claim (domains and conditions, not in the registry):
-    interval  dom_x: x ∈ Set.Icc (0 : ℝ) (1 : ℝ)
-  axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 100.82 s
+  reason: the faithfulness audit found the statement does not say what the intent says
+  audit: MISMATCH   lean: 0.0 s

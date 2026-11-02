@@ -32,8 +32,8 @@
     "Quot.sound",
     "propext"
   ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 58.04,
+  "audit": "MATCH",
+  "lean_seconds": 70.5,
   "recorded": {
     "claim_sha256": "b290bc0d49977e45f575710d0a7af84eb74e2a579bdc4e0000bf2970bd7f3f2a",
     "lean_sha256": "2833757d56113ad4c090d492f57202e21ca640f3f1e8d010176f7452da03d547",

@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "ba4b1331e6773fee3a6518b8404c08b6bd33b356b4548a7f155fdf5330664f96",
+  "audit_sha256": "0190710c4d6d92cd3cead2b1791faee300dc1fc63bfba078e852c981ef02528a",
   "match": false,
   "by": "agent",
-  "notes": "The intent says a 10 GiB file fits in 11 GB, but the formal statement compares 80 GiB (80 \u00d7 2\u00b3\u2070 bytes) to 88 GB (88 \u00d7 10\u2079), so the numbers differ by a factor of 8 even though the ratio happens to hold.",
+  "notes": "The formal statement compares 10 GiB (10\u00b72^30 = 10,737,418,240 bytes) to 11 GB, but the numbers given (85,899,345,920 and 88,000,000,000) are 8 times those byte counts (apparently bits), so the unit-free inequality doesn't state the byte-level claim in the intent. The inequality is true, but it does not match the intent as written.",
   "date": "2026-11-02"
 }

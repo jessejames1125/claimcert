@@ -1,9 +1,7 @@
-The statement says the following.
-
 **Variable:** `r` is a real number.
 
-**Hypothesis (`h_rate_cap`):** `A_rate_cap r` holds. By the definition, this means `r ≤ 200`. The definition is labeled "NUMBER", with the source "illustrative value for this evaluation". It gives no units, though the task says all numbers are in SI units.
+**Hypothesis (`h_rate_cap`):** `r` satisfies `A_rate_cap r`. By the definition, that means `r ≤ 200`. The definition's docstring labels it "NUMBER" with range "n/a" and source "illustrative value for this evaluation". The docstring doesn't change the formal content.
 
 **Conclusion:** `r ≤ 300`.
 
-In words: for any real number `r`, if `r` is at most 200, then `r` is at most 300.
+**In plain terms:** the statement says that if the real number `r` is at most 200, then `r` is at most 300. The theorem is stated with the proof left as `...`.

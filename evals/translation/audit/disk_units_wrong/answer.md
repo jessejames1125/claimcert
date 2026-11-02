@@ -1,6 +1,7 @@
-The statement asserts one thing about real numbers: 80,000,000,000 (8 × 10¹⁰) is less than or equal to 84,000,000,000 (8.4 × 10¹⁰).
+The statement asserts one inequality between two specific real numbers. No variables and no hypotheses are involved.
 
-- **Variables:** None. Both sides are numeric literals, each typed as a real number (`ℝ`).
-- **Hypotheses:** None.
-- **Conclusion:** The real number 80000000000 is ≤ the real number 84000000000.
-- **Definitions:** None are used, and no units appear in the statement itself.
+- **Conclusion:** the real number 80,000,000,000 (8 × 10¹⁰) is less than or equal to the real number 84,000,000,000 (8.4 × 10¹⁰).
+- **Variables:** none. Both sides are numeric literals, cast to the real numbers ℝ.
+- **Hypotheses:** none.
+- **Definitions:** none are used.
+- **Units:** if the numbers are read in SI units, both are bare quantities with no stated physical meaning.

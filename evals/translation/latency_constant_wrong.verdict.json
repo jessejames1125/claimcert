@@ -2,35 +2,21 @@
   "claim": "latency_constant_wrong",
   "type": "bound",
   "intent": "Measured latency stays within the 100 ms budget.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
     "TECH": [],
-    "NUMBER": [
-      "latency_measured"
-    ]
+    "NUMBER": []
   },
-  "details": {
-    "latency_measured": {
-      "kind": "NUMBER",
-      "source": "illustrative value for this evaluation",
-      "range": null,
-      "date": null,
-      "produced_by": "made up for this evaluation"
-    }
-  },
+  "details": {},
   "unused_assumptions": [],
   "premises": [],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 55.82,
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "a8d4e95d3e3fd20e7fd35f52bb0f1b1e243d0bae1d471cac749445b439b37c0e",
     "lean_sha256": "43141d97f18fdee48ee570f2d669e7012954d4a89e145389dcabcad4dcab9681",

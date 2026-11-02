@@ -1,11 +1,9 @@
-**Variable:** `l` is a real number.
+The statement has one real-valued variable and one hypothesis, and it concludes with a bound on that variable.
 
-**Definition used:** `A_latency_measured l` is the proposition that `l ≤ 3/20`. That is, `l` is at most 0.15.
+**Variable:** `l` is a real number. The definition's name suggests a measured latency, and in SI units that would be seconds.
 
-**Hypothesis:** `h_latency_measured` says `A_latency_measured l` holds. So `l ≤ 0.15`.
+**Hypothesis:** `h_latency_measured` says that `A_latency_measured l` holds. By the definition, that means `l ≤ 3/20`, so `l` is at most 0.15.
 
-**Conclusion:** `l ≤ 1/5`. That is, `l` is at most 0.2.
+**Conclusion:** `l ≤ 1/5`, so `l` is at most 0.2.
 
-**Statement:** For every real number `l`, if `l ≤ 0.15`, then `l ≤ 0.2`.
-
-The names suggest `l` is a latency in seconds. The Lean statement itself only talks about a real number `l` and two upper bounds on it.
+In words: for any real number `l` that is at most 0.15, `l` is also at most 0.2.

@@ -1,12 +1,9 @@
-The statement has one variable and one hypothesis.
+The statement introduces one real number, x, and one hypothesis, dom_x. It then makes one claim about x.
 
-**Variable:**
-- `x` is a real number.
+**Variable:** x is a real number.
 
-**Hypothesis:**
-- `dom_x` says `x` lies in the closed interval from 0 to 1. That is, 0 ≤ x and x ≤ 1.
+**Hypothesis (dom_x):** x lies in the closed interval from 0 to 1, so 0 ≤ x ≤ 1. Both endpoints are included.
 
-**Conclusion:**
-- `x − sin x ≤ 1/5`. Here `sin` is the real sine function, with `x` taken in radians. Since `x` is a real number and not a measure in SI units, the radian reading is the only unit that applies. The conclusion says that `x` minus the sine of `x` is at most one fifth, or 0.2.
+**Conclusion:** The difference x − sin x is at most 1/5, i.e. 0.2. Here sin x is the real sine function, with x in radians. The claim is x − sin x ≤ 1/5.
 
-In short, the statement asserts that for every real `x` between 0 and 1 inclusive, `x − sin x` does not exceed 0.2. There are no other definitions, since the definitions block is empty and the statement uses only the standard real numbers, `Set.Icc` and `Real.sin`.
+The statement says this holds for every real x in [0, 1]. No definitions are used beyond the standard real numbers and the real sine function.

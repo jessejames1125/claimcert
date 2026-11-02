@@ -11,6 +11,6 @@ numbers are in SI units. Do not guess at the author's purpose and do not judge w
 ## Statement
 
 ```lean
-theorem timeout_ok (t : ℝ) (dom_c1 : t ≥ (1 : ℝ)) (dom_c2 : t ≤ (30 : ℝ)) :
+theorem claim (t : ℝ) (dom_c1 : t ≥ (1 : ℝ)) (dom_c2 : t ≤ (30 : ℝ)) :
     t ≤ (40 : ℝ) := by ...
 ```

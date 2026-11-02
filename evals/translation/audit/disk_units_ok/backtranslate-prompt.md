@@ -11,6 +11,6 @@ numbers are in SI units. Do not guess at the author's purpose and do not judge w
 ## Statement
 
 ```lean
-theorem disk_units_ok :
+theorem claim :
     (85899345920 : ℝ) ≤ (88000000000 : ℝ) := by ...
 ```

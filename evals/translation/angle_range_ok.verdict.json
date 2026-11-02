@@ -27,7 +27,7 @@
     "propext"
   ],
   "audit": "MATCH",
-  "lean_seconds": 110.12,
+  "lean_seconds": 861.51,
   "recorded": {
     "claim_sha256": "81888b415c521f34040c11f8ae9421ece9b4b6f3e6fa5374d80a7827ae151e21",
     "lean_sha256": "e1b4c8d5db657ab9861a28d194a798630a28c560c4a670d1dd34dc03b49d56f5",

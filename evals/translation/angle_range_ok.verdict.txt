@@ -6,4 +6,4 @@ angle_range_ok: PASS (bound) at stage kernel
   premises from the claim (domains and conditions, not in the registry):
     interval  dom_x: x ∈ Set.Icc (0 : ℝ) (1 : ℝ)
   axioms: Classical.choice, Quot.sound, propext
-  audit: MATCH   lean: 110.12 s
+  audit: MATCH   lean: 861.51 s

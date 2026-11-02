@@ -2,9 +2,9 @@
   "claim": "angle_range_wrong",
   "type": "bound",
   "intent": "For every x from 0 to 2, x - sin x is at most 0.2.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -13,21 +13,10 @@
   },
   "details": {},
   "unused_assumptions": [],
-  "premises": [
-    {
-      "name": "dom_x",
-      "kind": "interval",
-      "statement": "x ∈ Set.Icc (0 : ℝ) (1 : ℝ)",
-      "used": true
-    }
-  ],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 100.82,
+  "premises": [],
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "0dace604c7d7f00e0a39ee877109cb6aae01118d40322aabf5cdfbe210af956a",
     "lean_sha256": "377947c51cdc84bd026bc95d222dda9bf07a69a987f34bd9a614170daa5483f5",

@@ -7,4 +7,4 @@ timeout_ok: PASS (bound) at stage kernel
     condition dom_c1: t ≥ (1 : ℝ)  (unused)
     condition dom_c2: t ≤ (30 : ℝ)
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 58.04 s
+  audit: MATCH   lean: 70.5 s

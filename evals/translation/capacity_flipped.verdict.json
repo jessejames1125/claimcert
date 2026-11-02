@@ -2,35 +2,21 @@
   "claim": "capacity_flipped",
   "type": "bound",
   "intent": "The service handles at least 300 requests per second.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
     "TECH": [],
-    "NUMBER": [
-      "rate_cap"
-    ]
+    "NUMBER": []
   },
-  "details": {
-    "rate_cap": {
-      "kind": "NUMBER",
-      "source": "illustrative value for this evaluation",
-      "range": null,
-      "date": null,
-      "produced_by": "made up for this evaluation"
-    }
-  },
+  "details": {},
   "unused_assumptions": [],
   "premises": [],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 69.08,
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "67f838fbb93c223443801139bff326b7aaa117a7b1cc34edd1414a319dce54ed",
     "lean_sha256": "3315777b8f732a405cbe4e00c6ae2fad8fc94bbdf827e609c9e14b10ae7d2f70",

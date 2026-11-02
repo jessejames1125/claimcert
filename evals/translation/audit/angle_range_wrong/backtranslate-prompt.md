@@ -11,6 +11,6 @@ numbers are in SI units. Do not guess at the author's purpose and do not judge w
 ## Statement
 
 ```lean
-theorem angle_range_wrong (x : ℝ) (dom_x : x ∈ Set.Icc (0 : ℝ) (1 : ℝ)) :
+theorem claim (x : ℝ) (dom_x : x ∈ Set.Icc (0 : ℝ) (1 : ℝ)) :
     (x - (Real.sin x)) ≤ (1 / 5 : ℝ) := by ...
 ```

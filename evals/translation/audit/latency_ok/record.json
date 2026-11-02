@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "e3f3c7e43e172348beaf6563dd748cbc91ec2da99a4f4f9d805106d9a9e6fdb3",
+  "audit_sha256": "5c7d2839a2cdea0d83eaf84f34cddeb07088e1d91366d19fb0ee0007263e50bf",
   "match": true,
   "by": "agent",
-  "notes": "The formal statement says any real l with l \u2264 0.15 also satisfies l \u2264 0.2, which is the intent with 150 ms read as 0.15 s and 200 ms as 0.2 s, so the units are consistent.",
+  "notes": "The formal statement says that any real `l` with `l \u2264 0.15` also satisfies `l \u2264 0.2`. This is the intent with 150 ms and 200 ms written in seconds, so the units are consistent.",
   "date": "2026-11-02"
 }

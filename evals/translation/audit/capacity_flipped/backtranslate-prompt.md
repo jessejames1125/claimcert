@@ -13,6 +13,6 @@ def A_rate_cap (r : ℝ) : Prop :=
 ## Statement
 
 ```lean
-theorem capacity_flipped (r : ℝ) (h_rate_cap : A_rate_cap r) :
+theorem claim (r : ℝ) (h_rate_cap : A_rate_cap r) :
     r ≤ (300 : ℝ) := by ...
 ```

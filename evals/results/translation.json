@@ -7,7 +7,7 @@
   "mistranslated_passed_by_kernel": 6,
   "mistranslated_caught_by_audit": 6,
   "faithful_passed_by_kernel": 6,
-  "faithful_flagged_by_audit": 2,
+  "faithful_flagged_by_audit": 1,
   "rows": {
     "angle_range_ok": {
       "group": "faithful",
@@ -15,7 +15,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": true,
-      "reason": "The formal statement says that for all real x in [0,1], x − sin x ≤ 1/5, which is the intent exactly (0.2 = 1/5). The claim is also true, since x − sin x ≤ x³/6 ≤ 1/6 < 0.2 on that interval."
+      "reason": "The formal statement says that for all real x in [0,1], x − sin x ≤ 1/5, which is the intent exactly. It is also true, since x − sin x ≤ x³/6 ≤ 1/6 < 0.2 on that interval."
     },
     "angle_range_wrong": {
       "group": "mistranslated",
@@ -23,7 +23,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The intent covers x from 0 to 2, but the formal statement only covers x from 0 to 1, which is a narrower range and so a weaker claim."
+      "reason": "The intent covers every x in [0, 2], but the formal statement only assumes x in [0, 1], which is a narrower range (and x − sin x at x = 2 is about 1.09, so the claim for [0, 2] is actually false)."
     },
     "budget_assumed": {
       "group": "mistranslated",
@@ -31,15 +31,15 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The formal statement is a tautology (B ≤ 1 → B ≤ 1) that assumes the very bound it concludes, so proving it says nothing about every shipped retry policy staying under its 1 second budget."
+      "reason": "The formal statement is a tautology (B ≤ 1 → B ≤ 1) about an arbitrary real number, so it says nothing about retry policies that are actually shipped, and the budget bound is assumed rather than established."
     },
     "budget_ok": {
       "group": "faithful",
       "planted_error": null,
       "kernel": "PASS",
       "stage": "kernel",
-      "audit_match": false,
-      "reason": "The intent fixes the wait at at most 200 ms (a unit conversion to 0.2 s) and concludes a 1 second total, while the formal statement is an abstract real `w ≤ 1/5` with no units, so it never states the 200 ms ↔ 1/5 s link, though the arithmetic `5w ≤ 1` is correct under that implicit reading."
+      "audit_match": true,
+      "reason": "The formal statement shows that any real w ≤ 1/5 (200 ms = 0.2 s) gives 5w ≤ 1 (one second), which is the intent's claim once the unit is taken as seconds."
     },
     "capacity_flipped": {
       "group": "mistranslated",
@@ -47,7 +47,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The formal statement is only the trivial implication \"r ≤ 200 → r ≤ 300\", which is a different direction and bound from the intent's \"service handles at least 300 requests per second\" (r ≥ 300)."
+      "reason": "The intent claims a throughput of at least 300 (a lower bound), but the formal statement only proves that `r ≤ 300` from `r ≤ 200`, which is an upper bound with a different number and the opposite direction."
     },
     "capacity_ok": {
       "group": "faithful",
@@ -55,7 +55,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": true,
-      "reason": "The intent says a rate capped at 200/s never exceeds 300/s, and the formal statement proves that `r ≤ 200` implies `r ≤ 300` for real `r`, which is the same claim."
+      "reason": "The intent is that a cap of 200 implies the rate never exceeds 300, and the formal statement (r ≤ 200 → r ≤ 300) says exactly that, with the cap as the hypothesis and a valid weaker bound as the conclusion."
     },
     "disk_units_ok": {
       "group": "faithful",
@@ -63,7 +63,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The intent says a 10 GiB file fits in 11 GB, but the formal statement compares 80 GiB (80 × 2³⁰ bytes) to 88 GB (88 × 10⁹), so the numbers differ by a factor of 8 even though the ratio happens to hold."
+      "reason": "The formal statement compares 10 GiB (10·2^30 = 10,737,418,240 bytes) to 11 GB, but the numbers given (85,899,345,920 and 88,000,000,000) are 8 times those byte counts (apparently bits), so the unit-free inequality doesn't state the byte-level claim in the intent. The inequality is true, but it does not match the intent as written."
     },
     "disk_units_wrong": {
       "group": "mistranslated",
@@ -71,7 +71,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The intent compares 10 GiB (≈10.74 GB) against 10.5 GB, which is false, since 10 GiB exceeds 10.5 GB. The formal statement instead checks 8×10¹⁰ ≤ 8.4×10¹⁰, which is true. Its numbers correspond to 10 GB and 10.5 GB in bits, so it drops the GiB-to-GB conversion that makes the intent's claim fail."
+      "reason": "The intent says a 10 GiB file (about 10.74×10⁹ bytes) fits in 10.5 GB of free disk, but the formal statement compares 8×10¹⁰ to 8.4×10¹⁰, which is a different pair of numbers (these look like bit counts, 10 GB×8 and 10.5 GB×8, rather than 10 GiB and 10.5 GB) and so does not capture the GiB-to-GB conversion that the claim depends on."
     },
     "latency_constant_wrong": {
       "group": "mistranslated",
@@ -79,7 +79,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The intent is a 100 ms budget (0.1 s), but the formal statement assumes l ≤ 0.15 and concludes only l ≤ 1, which uses the wrong bound (150 ms) and a much weaker conclusion (1 s) than the stated budget."
+      "reason": "The intent is a 100 ms budget (0.1 s), but the formal statement's hypothesis is `l ≤ 0.15` and its conclusion is `l ≤ 1`, so neither bound matches 100 ms and the conclusion is much weaker than the intended budget."
     },
     "latency_ok": {
       "group": "faithful",
@@ -87,7 +87,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": true,
-      "reason": "The formal statement says any real l with l ≤ 0.15 also satisfies l ≤ 0.2, which is the intent with 150 ms read as 0.15 s and 200 ms as 0.2 s, so the units are consistent."
+      "reason": "The formal statement says that any real `l` with `l ≤ 0.15` also satisfies `l ≤ 0.2`. This is the intent with 150 ms and 200 ms written in seconds, so the units are consistent."
     },
     "timeout_ok": {
       "group": "faithful",
@@ -95,7 +95,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": true,
-      "reason": "The formal statement (1 ≤ t ≤ 30 implies t ≤ 40) says exactly what the intent says, and the missing unit on `t` doesn't change the claim."
+      "reason": "The formal statement says that any real t with 1 ≤ t ≤ 30 satisfies t ≤ 40, which is exactly the intent, since 30 ≤ 40 makes the conclusion follow."
     },
     "timeout_vacuous": {
       "group": "mistranslated",
@@ -103,7 +103,7 @@
       "kernel": "PASS",
       "stage": "kernel",
       "audit_match": false,
-      "reason": "The formal statement is vacuous (hypotheses t ≥ 40 and t ≤ 30 contradict each other) and uses 40 and 30 instead of the intent's 1 and 5, so proving it says nothing about timeouts between 1 and 5 seconds."
+      "reason": "The formal statement uses a hypothesis of t ≥ 40 (not ≥ 1) and t ≤ 30, which are contradictory and make it vacuously true, whereas the intent says any timeout ≥ 1 is ≤ 5, which is a different (and false) claim."
     }
   }
 }

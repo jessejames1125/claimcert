@@ -38,7 +38,7 @@ Read that plainly: on simple planted arithmetic a careful model with a well-writ
 
 ## Translation gap: does the formal statement say what the English says?
 
-Every claim in `translation/` is true mathematics, so Lean should pass all 12. Six were written to disagree with their English intent: a GB where the intent says GiB, a range cut short, a reversed inequality, contradictory premises, an assumption that is the conclusion, and a looser number. The other six are faithful. The audit is blind: one agent run reads only the Lean and writes English, a second reads only that English and the intent.
+Every claim in `translation/` is true mathematics, so Lean should pass all 12. Six were written to disagree with their English intent: a GB where the intent says GiB, a range cut short, a reversed inequality, contradictory premises, an assumption that is the conclusion, and a looser number. The other six are faithful. The audit is blind: one agent run reads only the Lean and writes English, a second reads only that English and the intent. The theorem is renamed `claim` in what the first run sees, because names such as `capacity_flipped` would give the answer away.
 
 ```bash
 python evals/run_translation.py --agent "claude -p --safe-mode --model sonnet --strict-mcp-config --permission-mode dontAsk"
@@ -49,9 +49,9 @@ Result, 2026-11-02, one run, Sonnet through the `claude` CLI for both audit step
 | | Mistranslated (6) | Faithful (6) |
 |---|---|---|
 | Lean kernel passed the statement | 6 | 6 |
-| Blind audit said "does not match" | 6 | 2 (false alarms: `budget_ok`, `disk_units_ok`) |
+| Blind audit said "does not match" | 6 | 1 (a false alarm: `disk_units_ok`) |
 
-Lean passed every mistranslated claim, as it must: each one is true mathematics. The audit caught all six and raised two false alarms on faithful claims. In `disk_units_ok` the judge read the bit-converted constants as a different claim. Raw replies: `translation/audit/` and `results/translation.json`.
+Lean passed every mistranslated claim, as it must: each one is true mathematics. The audit caught all six and raised one false alarm: in `disk_units_ok` the judge read the bit-converted constants as a different claim. An earlier run of the same set, before the theorem name was hidden from the reader, also caught six and raised two false alarms, so treat the false-alarm rate as noisy. Raw replies: `translation/audit/` and `results/translation.json`.
 
 Twelve claims and one run is a small sample, written by the tool's author. It shows the size of the gap and that the audit is doing something. It is not an error rate. The mistranslations are also deliberate, and a real one may be subtler. Translation from English by a model, where the model writes the YAML itself, is not measured here: these YAML files were written by hand.
 

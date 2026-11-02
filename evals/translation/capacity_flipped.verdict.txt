@@ -1,8 +1,4 @@
-capacity_flipped: PASS (bound) at stage kernel
+capacity_flipped: FAIL (bound) at stage audit
   intent: The service handles at least 300 requests per second.
-  assumptions used:
-    NUMBER rate_cap  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
-  unused, dropped: none
-  premises from the claim: none
-  axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 69.08 s
+  reason: the faithfulness audit found the statement does not say what the intent says
+  audit: MISMATCH   lean: 0.0 s

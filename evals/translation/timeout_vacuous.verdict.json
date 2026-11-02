@@ -2,9 +2,9 @@
   "claim": "timeout_vacuous",
   "type": "bound",
   "intent": "Any timeout of at least 1 second is at most 5 seconds.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -13,27 +13,10 @@
   },
   "details": {},
   "unused_assumptions": [],
-  "premises": [
-    {
-      "name": "dom_c1",
-      "kind": "condition",
-      "statement": "t ≥ (40 : ℝ)",
-      "used": true
-    },
-    {
-      "name": "dom_c2",
-      "kind": "condition",
-      "statement": "t ≤ (30 : ℝ)",
-      "used": true
-    }
-  ],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 59.8,
+  "premises": [],
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "bd546c69efff8948dc47691f409e6d3de5df7e184d23f9cc502433709948c5e4",
     "lean_sha256": "02d8a60193f82209fd2073994635a2c82144a6ebd808be0cfc50520d445b9891",

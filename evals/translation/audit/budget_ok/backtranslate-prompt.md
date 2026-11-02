@@ -13,6 +13,6 @@ def A_wait_cap (w : ℝ) : Prop :=
 ## Statement
 
 ```lean
-theorem budget_ok (w : ℝ) (h_wait_cap : A_wait_cap w) :
+theorem claim (w : ℝ) (h_wait_cap : A_wait_cap w) :
     ((5 : ℝ) * w) ≤ (1 : ℝ) := by ...
 ```

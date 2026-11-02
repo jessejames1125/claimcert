@@ -1,2 +1,2 @@
 MISMATCH
-The intent says a 10 GiB file fits in 11 GB, but the formal statement compares 80 GiB (80 × 2³⁰ bytes) to 88 GB (88 × 10⁹), so the numbers differ by a factor of 8 even though the ratio happens to hold.
+The formal statement compares 10 GiB (10·2^30 = 10,737,418,240 bytes) to 11 GB, but the numbers given (85,899,345,920 and 88,000,000,000) are 8 times those byte counts (apparently bits), so the unit-free inequality doesn't state the byte-level claim in the intent. The inequality is true, but it does not match the intent as written.

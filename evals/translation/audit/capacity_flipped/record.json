@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "6f2fd83529cfa7c002879eac73acc171f27d8dd99eda9683677847f3d6ed0bd4",
+  "audit_sha256": "de4ab85139db5775c5d17fe03840f72b62da7a1bc9413722c77c09092b27d1e3",
   "match": false,
   "by": "agent",
-  "notes": "The formal statement is only the trivial implication \"r \u2264 200 \u2192 r \u2264 300\", which is a different direction and bound from the intent's \"service handles at least 300 requests per second\" (r \u2265 300).",
+  "notes": "The intent claims a throughput of at least 300 (a lower bound), but the formal statement only proves that `r \u2264 300` from `r \u2264 200`, which is an upper bound with a different number and the opposite direction.",
   "date": "2026-11-02"
 }

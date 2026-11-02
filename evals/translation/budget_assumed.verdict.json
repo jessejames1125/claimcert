@@ -2,35 +2,21 @@
   "claim": "budget_assumed",
   "type": "bound",
   "intent": "Every retry policy we ship stays under its 1 second budget.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
     "TECH": [],
-    "NUMBER": [
-      "budget_given"
-    ]
+    "NUMBER": []
   },
-  "details": {
-    "budget_given": {
-      "kind": "NUMBER",
-      "source": "illustrative value for this evaluation",
-      "range": null,
-      "date": null,
-      "produced_by": "made up for this evaluation"
-    }
-  },
+  "details": {},
   "unused_assumptions": [],
   "premises": [],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 83.57,
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "0c5ee73e6ffdfdb614d8a68a9c4575753032e1708d1a526f58ecf75a9ae07b57",
     "lean_sha256": "74956f9ae229aeb47455db9e130e67178d8c28bfa36e970d202be6b97439b938",

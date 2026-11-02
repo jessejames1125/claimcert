@@ -1,8 +1,4 @@
-budget_assumed: PASS (bound) at stage kernel
+budget_assumed: FAIL (bound) at stage audit
   intent: Every retry policy we ship stays under its 1 second budget.
-  assumptions used:
-    NUMBER budget_given  (source: illustrative value for this evaluation; produced by: made up for this evaluation)
-  unused, dropped: none
-  premises from the claim: none
-  axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 83.57 s
+  reason: the faithfulness audit found the statement does not say what the intent says
+  audit: MISMATCH   lean: 0.0 s

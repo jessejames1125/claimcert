@@ -1,2 +1,2 @@
 MISMATCH
-The formal statement is only the trivial implication "r ≤ 200 → r ≤ 300", which is a different direction and bound from the intent's "service handles at least 300 requests per second" (r ≥ 300).
+The intent claims a throughput of at least 300 (a lower bound), but the formal statement only proves that `r ≤ 300` from `r ≤ 200`, which is an upper bound with a different number and the opposite direction.

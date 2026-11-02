@@ -1,2 +1,2 @@
 MATCH
-The intent says a rate capped at 200/s never exceeds 300/s, and the formal statement proves that `r ≤ 200` implies `r ≤ 300` for real `r`, which is the same claim.
+The intent is that a cap of 200 implies the rate never exceeds 300, and the formal statement (r ≤ 200 → r ≤ 300) says exactly that, with the cap as the hypothesis and a valid weaker bound as the conclusion.

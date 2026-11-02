@@ -13,6 +13,6 @@ def A_budget_given (B : ℝ) : Prop :=
 ## Statement
 
 ```lean
-theorem budget_assumed (B : ℝ) (h_budget_given : A_budget_given B) :
+theorem claim (B : ℝ) (h_budget_given : A_budget_given B) :
     B ≤ (1 : ℝ) := by ...
 ```

@@ -1,13 +1,11 @@
-The statement has one real-valued variable `r` and one hypothesis.
-
-**Variable:**
+**Variables**
 - `r` is a real number.
 
-**Hypothesis (`h_rate_cap`):**
-- `A_rate_cap r` holds. By its definition, this means `r ≤ 200`. The definition's comment calls it a "NUMBER" with range n/a and says the value is illustrative. In SI units this would be a bound of 200 on `r`, but the definition does not say what `r` measures.
+**Hypothesis**
+- `h_rate_cap` says `A_rate_cap r` holds. By the definition, that means `r ≤ 200`. The definition is labeled a number with range "n/a" and an "illustrative value for this evaluation". It carries no stated physical meaning or units beyond that.
 
-**Conclusion:**
+**Conclusion**
 - `r ≤ 300`.
 
-**Overall assertion:**
-- For every real number `r`, if `r` is at most 200, then `r` is at most 300.
+**Summary**
+The statement says that any real number `r` that is less than or equal to 200 is also less than or equal to 300.

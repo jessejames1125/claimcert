@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "4511ccc7068aec5ba6c351827a5365444a2073265646b1b557dc0328cca5b1b9",
+  "audit_sha256": "e75821ab72f63b3360b755eb6dbd78796cfdc712edd5c88ad1e8b655e76e450c",
   "match": true,
   "by": "agent",
-  "notes": "The formal statement (1 \u2264 t \u2264 30 implies t \u2264 40) says exactly what the intent says, and the missing unit on `t` doesn't change the claim.",
+  "notes": "The formal statement says that any real t with 1 \u2264 t \u2264 30 satisfies t \u2264 40, which is exactly the intent, since 30 \u2264 40 makes the conclusion follow.",
   "date": "2026-11-02"
 }

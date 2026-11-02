@@ -1,8 +1,13 @@
-The statement introduces one real-number variable, `t`, and two hypotheses about it:
+The statement says the following.
 
-- `dom_c1`: `t` is greater than or equal to 1.
-- `dom_c2`: `t` is less than or equal to 30.
+**Variable:** `t` is a real number.
 
-The conclusion is that `t` is less than or equal to 40.
+**Hypotheses:**
+1. `dom_c1`: `t` is greater than or equal to 1.
+2. `dom_c2`: `t` is less than or equal to 30.
 
-In words: if a real number `t` lies in the closed interval from 1 to 30, then `t` is at most 40. The statement uses no other definitions. The problem says all numbers are in SI units, but it names no unit for `t`.
+**Conclusion:** `t` is less than or equal to 40.
+
+In words: for any real number `t` with 1 ≤ t ≤ 30, it holds that t ≤ 40.
+
+No definitions are used. The numerals 1, 30 and 40 are real-number literals. The statement has no units or other quantities.

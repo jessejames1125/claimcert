@@ -2,9 +2,9 @@
   "claim": "disk_units_wrong",
   "type": "point",
   "intent": "A 10 GiB file fits in 10.5 GB of free disk.",
-  "status": "PASS",
-  "stage": "kernel",
-  "reason": "kernel-checked",
+  "status": "FAIL",
+  "stage": "audit",
+  "reason": "the faithfulness audit found the statement does not say what the intent says",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -14,13 +14,9 @@
   "details": {},
   "unused_assumptions": [],
   "premises": [],
-  "axioms": [
-    "Classical.choice",
-    "Quot.sound",
-    "propext"
-  ],
-  "audit": "UNAUDITED",
-  "lean_seconds": 64.39,
+  "axioms": [],
+  "audit": "MISMATCH",
+  "lean_seconds": 0.0,
   "recorded": {
     "claim_sha256": "2c2d7789c0ccd86ffc664f8cf8424c491d7314c9dfc15cc1766ae1199a56ede6",
     "lean_sha256": "ef8bfc9a0d8659635233e0615672da6851741c97b713a6324959fca39fc653e9",

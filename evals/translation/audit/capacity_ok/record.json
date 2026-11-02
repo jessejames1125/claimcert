@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "e3cf63e1caccaa86ebc6d996ea3275aaafdb8c4c019cc291f496b372182661a9",
+  "audit_sha256": "e285d41e139a028e8e74de43afffb1e884223939c69c7df00faac2231982d132",
   "match": true,
   "by": "agent",
-  "notes": "The intent says a rate capped at 200/s never exceeds 300/s, and the formal statement proves that `r \u2264 200` implies `r \u2264 300` for real `r`, which is the same claim.",
+  "notes": "The intent is that a cap of 200 implies the rate never exceeds 300, and the formal statement (r \u2264 200 \u2192 r \u2264 300) says exactly that, with the cap as the hypothesis and a valid weaker bound as the conclusion.",
   "date": "2026-11-02"
 }

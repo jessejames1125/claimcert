@@ -1,7 +1,14 @@
-The statement introduces one real-valued variable, **x**, and one hypothesis, **dom_x**, which says x lies in the closed interval from 0 to 1. That means 0 ≤ x and x ≤ 1.
+The statement introduces one real number, x, and one hypothesis, dom_x. It then makes one claim about x.
 
-The conclusion is that x − sin x ≤ 1/5, which is 0.2. Here sin is the real sine function, and x is treated as a plain real number (it is not tagged with a unit; the angle reading would be radians).
+**Variable:**
+- `x` is a real number.
 
-In words, the claim is that for every real x from 0 to 1 inclusive, x minus the sine of x is at most one fifth.
+**Hypothesis (`dom_x`):**
+- x lies in the closed interval from 0 to 1. That is, 0 ≤ x and x ≤ 1, with both endpoints allowed.
 
-The "Definitions" section was empty, so the statement uses only standard Lean/Mathlib notions: the real numbers, `Set.Icc` (the closed interval), `Real.sin`, and the real-number constant 1/5.
+**Conclusion:**
+- x minus sin x is at most 1/5. Here `Real.sin x` is the sine of x with x in radians, and 1/5 is the real number 0.2.
+
+**Together:** for every real x with 0 ≤ x ≤ 1, the inequality x − sin(x) ≤ 0.2 holds.
+
+The statement uses no custom definitions. No units are involved, because x is a dimensionless radian measure.

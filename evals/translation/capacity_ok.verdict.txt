@@ -5,4 +5,4 @@ capacity_ok: PASS (bound) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 55.44 s
+  audit: MATCH   lean: 65.31 s

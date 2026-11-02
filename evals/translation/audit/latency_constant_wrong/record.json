@@ -1,7 +1,7 @@
 {
-  "audit_sha256": "d7ba784281baffa81f0723c01ce582bda6216e51cbadf5c29903a1c175cfc642",
+  "audit_sha256": "004ad0f071d964d47cfdbedfab7d69d9ec10977dcbd1f7dd3a7af35985b53e7d",
   "match": false,
   "by": "agent",
-  "notes": "The intent is a 100 ms budget (0.1 s), but the formal statement assumes l \u2264 0.15 and concludes only l \u2264 1, which uses the wrong bound (150 ms) and a much weaker conclusion (1 s) than the stated budget.",
+  "notes": "The intent is a 100 ms budget (0.1 s), but the formal statement's hypothesis is `l \u2264 0.15` and its conclusion is `l \u2264 1`, so neither bound matches 100 ms and the conclusion is much weaker than the intended budget.",
   "date": "2026-11-02"
 }

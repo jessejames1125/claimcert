@@ -5,4 +5,4 @@ budget_ok: PASS (bound) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 75.38 s
+  audit: MATCH   lean: 70.98 s

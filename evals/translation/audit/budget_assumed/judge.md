@@ -1,2 +1,2 @@
 MISMATCH
-The formal statement is a tautology (B ≤ 1 → B ≤ 1) that assumes the very bound it concludes, so proving it says nothing about every shipped retry policy staying under its 1 second budget.
+The formal statement is a tautology (B ≤ 1 → B ≤ 1) about an arbitrary real number, so it says nothing about retry policies that are actually shipped, and the budget bound is assumed rather than established.

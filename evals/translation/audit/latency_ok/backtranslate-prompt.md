@@ -13,6 +13,6 @@ def A_latency_measured (l : ℝ) : Prop :=
 ## Statement
 
 ```lean
-theorem latency_ok (l : ℝ) (h_latency_measured : A_latency_measured l) :
+theorem claim (l : ℝ) (h_latency_measured : A_latency_measured l) :
     l ≤ (1 / 5 : ℝ) := by ...
 ```
