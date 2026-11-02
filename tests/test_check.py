@@ -187,8 +187,102 @@ def test_shared_deadline(monkeypatch, tmp_path):
         return 0, ""
     monkeypatch.setattr(leanrun.shutil, "which", lambda x: "lake")
     monkeypatch.setattr(leanrun, "_run", fake)
-    r = leanrun.run_lean(tmp_path, tmp_path / "a.lean", "M", 100.0)
-    assert r.status == "ok" and len(seen) == 2 and seen[1] < seen[0]
+    r = leanrun.run_lean(tmp_path, tmp_path / "a.lean", "M", 100.0, source="-- claim\n")
+    # build, compile, verify: one deadline across all three (the fake writes no olean, so compile ends it)
+    assert r.status == "error" and len(seen) == 2 and seen[1] < seen[0]
+
+
+def test_shared_deadline_reaches_the_verifier(monkeypatch, tmp_path):
+    import time
+    from claimcert import leanrun
+    seen = []
+
+    def fake(cmd, cwd, env, timeout):
+        seen.append(timeout)
+        if "-o" in cmd:
+            Path(cmd[cmd.index("-o") + 1]).write_bytes(b"olean")
+        time.sleep(0.02)
+        return 0, "CCREPORT n {}" if cmd[2].endswith(leanrun.VERIFY + ".exe") or cmd[2].endswith(leanrun.VERIFY) else ""
+    monkeypatch.setattr(leanrun.shutil, "which", lambda x: "lake")
+    monkeypatch.setattr(leanrun, "_run", fake)
+    r = leanrun.run_lean(tmp_path, tmp_path / "a.lean", "M", 100.0, nonce="n", source="-- claim\n")
+    assert r.status == "ok" and r.output == "CCREPORT n {}"
+    assert len(seen) == 3 and seen[2] < seen[1] < seen[0]
+
+
+def built_tree(tmp_path) -> Path:
+    from claimcert import leanrun
+    root = tmp_path / "lake"
+    for rel in ("ClaimCert.lean", "ClaimCert/Dim.lean", "M/Assumptions.lean", "Verify.lean", "lakefile.toml"):
+        (root / rel).parent.mkdir(parents=True, exist_ok=True)
+        (root / rel).write_text("-- source\n", encoding="utf-8")
+    leanrun.verify_exe(root).parent.mkdir(parents=True)
+    leanrun.verify_exe(root).write_bytes(b"exe")
+    stamp = root / ".lake" / "claimcert-stamps" / "M.Assumptions.sha256"
+    stamp.parent.mkdir(parents=True)
+    stamp.write_text(leanrun.source_stamp(root, "M.Assumptions") + "\n", encoding="utf-8")
+    return root
+
+
+def test_is_built_when_the_stamp_matches(tmp_path):
+    from claimcert.leanrun import is_built
+    assert is_built(built_tree(tmp_path), "M.Assumptions")
+
+
+@pytest.mark.parametrize("rel", ["ClaimCert.lean", "ClaimCert/Dim.lean", "M/Assumptions.lean", "Verify.lean",
+                                 "lakefile.toml"])
+def test_any_source_edit_needs_a_build_whatever_the_file_times(tmp_path, rel):
+    import os
+    from claimcert.leanrun import is_built
+    root = built_tree(tmp_path)
+    before = (root / rel).stat()
+    (root / rel).write_text("-- edited\n", encoding="utf-8")
+    os.utime(root / rel, ns=(before.st_atime_ns, before.st_mtime_ns))  # an old file time must not hide it
+    assert not is_built(root, "M.Assumptions")
+
+
+def test_missing_verifier_needs_a_build(tmp_path):
+    from claimcert import leanrun
+    root = built_tree(tmp_path)
+    leanrun.verify_exe(root).unlink()
+    assert not leanrun.is_built(root, "M.Assumptions")
+
+
+def test_build_is_skipped_when_current_and_lean_gets_no_nonce(tmp_path, monkeypatch):
+    from claimcert import leanrun
+    calls = []
+
+    def fake(cmd, cwd, env, timeout):
+        calls.append((cmd, env))
+        if "-o" in cmd:
+            Path(cmd[cmd.index("-o") + 1]).write_bytes(b"olean")
+        return 0, ""
+    monkeypatch.setattr(leanrun.shutil, "which", lambda x: "lake")
+    monkeypatch.setattr(leanrun, "_run", fake)
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test-not-real")
+    root = built_tree(tmp_path)
+    leanrun.run_lean(root, root / "a.lean", "M.Assumptions", 100.0, nonce="s3cret", source="-- claim\n")
+    assert [c[0][1] for c in calls] == ["env", "env"]
+    compile_cmd, compile_env = calls[0]
+    assert "s3cret" not in " ".join(compile_cmd) and "s3cret" not in compile_env.values()
+    assert all("ANTHROPIC_API_KEY" not in env for _, env in calls)
+    assert calls[1][0][-1] == "s3cret"
+
+
+def test_lean_compiles_the_screened_text_not_the_file(tmp_path, monkeypatch):
+    from claimcert import leanrun
+    seen = []
+
+    def fake(cmd, cwd, env, timeout):
+        if "-o" in cmd:
+            seen.append(Path(cmd[-1]).read_text(encoding="utf-8"))
+        return 1, ""
+    monkeypatch.setattr(leanrun.shutil, "which", lambda x: "lake")
+    monkeypatch.setattr(leanrun, "_run", fake)
+    root = built_tree(tmp_path)
+    (root / "a.lean").write_text("-- swapped after the screen\n", encoding="utf-8")
+    leanrun.run_lean(root, root / "a.lean", "M.Assumptions", 100.0, source="-- screened\n")
+    assert seen == ["-- screened\n"]
 
 
 
@@ -442,3 +536,34 @@ def test_sorryax_fails_at_axioms_even_without_hygiene(tmp_path):
     assert report is not None, run.output[-2000:]
     v = assemble(load_claim(p, reg), reg, report, run.seconds)
     assert v["status"] == "FAIL" and v["stage"] == "axioms" and "sorryAx" in v["reason"]
+
+
+LEAKED = ("theorem fx_leak : (1 : Nat) = 2 := by\n  sorry\n\n"
+          "#eval IO.println (String.join [\"CCREPORT \", \"n0nce\", \" \", "
+          "\"{\\\"theorem\\\":\\\"fx_leak\\\",\\\"binders\\\":[],\\\"axioms\\\":[]}\"])\n")
+
+
+@pytest.mark.lean
+def test_a_leaked_nonce_cannot_forge_the_report():
+    """Runs a hostile file directly, as if the screen were skipped and the nonce had leaked. The forged
+    line is printed while compiling; the report comes from the replay, which finds sorryAx."""
+    from claimcert.leanrun import run_lean
+    from claimcert.report import parse_report
+    run = run_lean(LEAN_ROOT, FIX / "fx_leak.lean", "ClaimCert", 1800, nonce="n0nce", source=LEAKED)
+    assert run.status == "ok", run.output[-2000:]
+    report = parse_report(run.output, "n0nce")
+    assert report is not None and "sorryAx" in report["axioms"], run.output[-2000:]
+
+
+SKIPPED = ("import Lean\n\nopen Lean Elab Command in\nset_option debug.skipKernelTC true in\n"
+           "run_cmd liftCoreM <| addDecl (.thmDecl { name := `fx_skip, levelParams := [], "
+           "type := mkConst ``False, value := mkConst ``True.intro })\n")
+
+
+@pytest.mark.lean
+def test_a_theorem_that_skipped_the_kernel_fails_at_replay():
+    """A file that adds a false theorem with the kernel switched off compiles; the replay refuses it."""
+    from claimcert.leanrun import run_lean
+    run = run_lean(LEAN_ROOT, FIX / "fx_skip.lean", "ClaimCert", 1800, nonce="n0nce", source=SKIPPED)
+    assert run.status == "kernel", run.output[-2000:]
+    assert "CCREPORT" not in run.output

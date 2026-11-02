@@ -1,12 +1,14 @@
 """Hygiene scan of untrusted proofs, and running Lake with a time budget."""
 from __future__ import annotations
 
+import hashlib
 import os
 import re
 import shutil
 import signal
 import subprocess
 import sys
+import tempfile
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -18,7 +20,7 @@ _WORDS = re.compile(
     r"|\b(macro|elab|syntax|notation|infix|infixl|infixr|prefix|postfix)\w*"
     r"|\brun_\w+|\bunsafe\w*|\bset_option\b|\baddDecl\w*|\bdebug\b|\bskipKernel\w*|\bLean\b|\bElab\b|\bMeta\b"
     r"|\bopen\b|\bEnvironment\b|\bTactic\b|\bCommand\b|\w*[Cc]ompile\w*|\bdecl\b"
-    r"|\bsimproc\w*|\bdsimproc\w*|\bregister_\w+|\bdeclare_\w+|\bmodifyEnv\b")
+    r"|\bsimproc\w*|\bdsimproc\w*|\bregister_\w+|\bdeclare_\w+|\bmodifyEnv\b|\bbuiltin_\w+")
 
 
 def hygiene(proof: str) -> str | None:
@@ -81,42 +83,93 @@ def _run(cmd: list[str], cwd: Path, env: dict, timeout: float) -> tuple[int, str
     return p.returncode, out + err
 
 
-def is_built(lake_root, module: str) -> bool:
-    """True when every Lean file a claim imports from this repo has an olean at least as new as its
-    source. A `lake build` with nothing to do still walks every Mathlib module (168 s measured on
-    Windows), so it runs only when something changed. Mathlib and LeanCert are pinned by the manifest."""
+# Lean gets these and nothing else from the caller's environment: no keys, no tokens, no nonce.
+_ENV_KEEP = ("PATH", "PATHEXT", "SYSTEMROOT", "SYSTEMDRIVE", "WINDIR", "COMSPEC", "TEMP", "TMP", "TMPDIR",
+             "HOME", "USERPROFILE", "LOCALAPPDATA", "APPDATA", "XDG_CACHE_HOME", "ELAN_HOME", "ELAN_TOOLCHAIN",
+             "LANG", "LC_ALL", "NUMBER_OF_PROCESSORS", "PROCESSOR_ARCHITECTURE")
+VERIFY = "claimcert-verify"
+
+
+def lean_env() -> dict:
+    return {k: os.environ[k] for k in _ENV_KEEP if k in os.environ}
+
+
+def verify_exe(lake_root) -> Path:
+    return Path(lake_root) / ".lake" / "build" / "bin" / (VERIFY + (".exe" if sys.platform == "win32" else ""))
+
+
+def _sources(lake_root: Path, module: str) -> list[Path]:
+    """Every file in this repo that decides what a check imports or runs."""
+    files = [lake_root / "ClaimCert.lean", *sorted((lake_root / "ClaimCert").glob("*.lean")),
+             lake_root.joinpath(*module.split(".")).with_suffix(".lean"), lake_root / "Verify.lean",
+             lake_root / "lakefile.toml", lake_root / "lake-manifest.json", lake_root / "lean-toolchain"]
+    return files
+
+
+def source_stamp(lake_root, module: str) -> str:
     lake_root = Path(lake_root)
-    lib = lake_root / ".lake" / "build" / "lib" / "lean"
-    names = [module, "ClaimCert", *(f"ClaimCert.{p.stem}" for p in (lake_root / "ClaimCert").glob("*.lean"))]
-    for name in names:
-        parts = name.split(".")
-        source = lake_root.joinpath(*parts).with_suffix(".lean")
-        olean = lib.joinpath(*parts).with_suffix(".olean")
-        if not source.is_file() or not olean.is_file() or olean.stat().st_mtime < source.stat().st_mtime:
-            return False
-    return True
+    h = hashlib.sha256()
+    for f in _sources(lake_root, module):
+        h.update(f.relative_to(lake_root).as_posix().encode() + b"\0")
+        h.update(f.read_bytes().replace(b"\r\n", b"\n") if f.is_file() else b"<missing>")
+        h.update(b"\0")
+    return h.hexdigest()
 
 
-def run_lean(lake_root, lean_file, module: str, timeout_s: float, lake: str = "lake",
-             nonce: str = "") -> LeanRun:
+def _stamp_file(lake_root: Path, module: str) -> Path:
+    return lake_root / ".lake" / "claimcert-stamps" / f"{module}.sha256"
+
+
+def is_built(lake_root, module: str) -> bool:
+    """True when the last successful build for this module saw exactly the sources on disk now. A
+    `lake build` with nothing to do still walks every Mathlib module (168 s measured on Windows), so it
+    runs only when something changed. File times are not trusted: the stamp is a hash of the sources."""
+    lake_root = Path(lake_root)
+    stamp = _stamp_file(lake_root, module)
+    return verify_exe(lake_root).is_file() and stamp.is_file() and \
+        stamp.read_text(encoding="utf-8").strip() == source_stamp(lake_root, module)
+
+
+def run_lean(lake_root, lean_file, module: str, timeout_s: float, lake: str = "lake", nonce: str = "",
+             theorem: str | None = None, source: str | None = None) -> LeanRun:
+    """Two processes. The first compiles a private copy of the claim file to an olean; its output is
+    read only for error messages. The second, claimcert-verify, replays the olean through the kernel
+    and prints the report line with the nonce. Only that process ever sees the nonce."""
     exe = shutil.which(lake)
     if exe is None:
         return LeanRun("missing", f"{lake!r} not found on PATH", 0.0)
+    lake_root, lean_file = Path(lake_root), Path(lean_file)
+    theorem = theorem or lean_file.stem
     t0 = time.perf_counter()
-    env = {**os.environ, "CC_NONCE": nonce}
+    env = lean_env()
 
     def left() -> float:
-        # one deadline for build plus run
+        # one deadline for build, compile and verify
         return max(timeout_s - (time.perf_counter() - t0), 0.001)
 
     try:
         if not is_built(lake_root, module):
-            rc, out = _run([exe, "build", module], Path(lake_root), env, left())
+            stamp = source_stamp(lake_root, module)
+            rc, out = _run([exe, "build", "ClaimCert", module, VERIFY], lake_root, env, left())
             if rc != 0:
                 return LeanRun("build", out, time.perf_counter() - t0)
-        rc, out = _run([exe, "env", "lean", str(Path(lean_file).resolve())], Path(lake_root), env, left())
+            _stamp_file(lake_root, module).parent.mkdir(parents=True, exist_ok=True)
+            _stamp_file(lake_root, module).write_text(stamp + "\n", encoding="utf-8")
+        source = source if source is not None else lean_file.read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory(prefix="claimcert-") as tmp:
+            copy = Path(tmp) / lean_file.name
+            copy.write_text(source, encoding="utf-8", newline="\n")
+            olean = copy.with_suffix(".olean")
+            rc, out = _run([exe, "env", "lean", "-R", tmp, "-o", str(olean), str(copy)], lake_root, env, left())
+            out = out.replace(str(copy), str(lean_file.resolve()))
+            if rc != 0 or not olean.is_file():
+                return LeanRun("error", out, time.perf_counter() - t0)
+            rc, out = _run([exe, "env", str(verify_exe(lake_root).resolve()), str(olean), theorem, nonce],
+                           lake_root, env, left())
     except subprocess.TimeoutExpired:
         return LeanRun("timeout", f"timed out after {timeout_s} s", time.perf_counter() - t0)
     except OSError as e:
         return LeanRun("missing", f"could not run {lake!r} in {lake_root}: {e}", time.perf_counter() - t0)
-    return LeanRun("ok" if rc == 0 else "error", out, time.perf_counter() - t0)
+    return LeanRun("ok" if rc == 0 else "kernel", out, time.perf_counter() - t0)
+
+

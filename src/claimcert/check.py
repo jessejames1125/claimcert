@@ -61,6 +61,7 @@ class Prepared:
     claim: object = None
     lean_file: Path | None = None
     failure: dict | None = None
+    source: str | None = None  # the Lean text that passed the screen; Lean compiles this copy
 
 
 def prepare(claim_path, registry_path) -> Prepared:
@@ -93,7 +94,7 @@ def prepare(claim_path, registry_path) -> Prepared:
     bad = hygiene(body[: -len(trailer)])
     if bad:
         return Prepared(reg, claim, lean_file, fail(name, "hygiene", bad, claim))
-    return Prepared(reg, claim, lean_file)
+    return Prepared(reg, claim, lean_file, source=text)
 
 
 def check_claim(claim_path, registry_path, lake_root, timeout_s: float = 1800.0, lake: str = "lake") -> dict:
@@ -122,9 +123,11 @@ def check_claim(claim_path, registry_path, lake_root, timeout_s: float = 1800.0,
         v["audit"] = audit
         return done(v)
     nonce = secrets.token_hex(16)
-    run = run_lean(lake_root, lean_file, reg.lean_module, timeout_s, lake, nonce=nonce)
+    run = run_lean(lake_root, lean_file, reg.lean_module, timeout_s, lake, nonce=nonce, theorem=claim.name,
+                   source=p.source)
     if run.status != "ok":
-        stage = {"missing": "toolchain", "timeout": "timeout", "build": "build", "error": "elaboration"}[run.status]
+        stage = {"missing": "toolchain", "timeout": "timeout", "build": "build", "error": "elaboration",
+                 "kernel": "kernel"}[run.status]
         if run.status == "error" and "error: (kernel)" in run.output:
             stage = "kernel"
         return done(fail(name, stage, _scrub(run.output[-4000:], lean_file, lake_root, nonce), claim, run.seconds))

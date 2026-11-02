@@ -24,3 +24,8 @@ name = "ClaimCertTranslation"
 
 [[lean_lib]]
 name = "ClaimCertAgent"
+
+[[lean_exe]]
+name = "claimcert-verify"
+root = "Verify"
+supportInterpreter = true

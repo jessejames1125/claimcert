@@ -4,14 +4,15 @@ open Lean Elab Command Meta
 
 namespace ClaimCert
 
-/-- `#cc_report thm` prints one line `CCREPORT <nonce> {json}`: each binder of `thm` (name,
-whether it is a proposition, the head constant of its type, whether the proof uses it) and the
-axioms `thm` depends on. The nonce is read from the environment variable `CC_NONCE` (`-` when
-unset). claimcert reads this line; it never reads the proof text. -/
+/-- `#cc_report thm` prints one line `CCREPORT - {json}`: each binder of `thm` (name, whether it is
+a proposition, the head constant of its type, whether the proof uses it) and the axioms `thm` depends
+on. It is for reading in an editor. `claimcert check` does not read it: its report comes from
+`claimcert-verify` (Verify.lean), a separate process that replays the compiled file through the
+kernel. -/
 syntax (name := ccReport) "#cc_report " ident : command
 
 @[command_elab ccReport] def elabCcReport : CommandElab := fun stx => do
-  let nonce := (← IO.getEnv "CC_NONCE").getD "-"
+  let nonce := "-"
   let name ← liftCoreM <| realizeGlobalConstNoOverloadWithInfo stx[1]
   let info ← getConstInfo name
   let some value := info.value? (allowOpaque := true) | throwError "#cc_report: {name} has no proof term"

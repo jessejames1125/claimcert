@@ -1,4 +1,3 @@
-import os
 import subprocess
 from pathlib import Path
 
@@ -42,11 +41,11 @@ def test_parse_accepts_one_right_nonce():
 
 @pytest.mark.lean
 def test_report_fixture_marks_used_and_unused():
-    env = {**os.environ, "CC_NONCE": "n0nce"}
-    p = subprocess.run(["lake", "env", "lean", "ClaimCertTest/ReportFixture.lean"], cwd=LEAN_ROOT, env=env,
-                       capture_output=True, text=True, encoding="utf-8", errors="replace")
-    assert p.returncode == 0, p.stdout + p.stderr
-    rep = parse_report(p.stdout + p.stderr, "n0nce")
+    from claimcert.leanrun import run_lean
+    fixture = LEAN_ROOT / "ClaimCertTest" / "ReportFixture.lean"
+    run = run_lean(LEAN_ROOT, fixture, "ClaimCert", 1800, nonce="n0nce", theorem="fx_uses")
+    assert run.status == "ok", run.output[-2000:]
+    rep = parse_report(run.output, "n0nce")
     by = {b["name"]: b for b in rep["binders"]}
     assert by["h_used"]["used"] is True
     assert by["h_unused"]["used"] is False

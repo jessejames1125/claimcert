@@ -53,3 +53,26 @@ def test_doctor_command_runs_in_a_checkout(monkeypatch, capsys):
     code = main(["doctor"])
     out = capsys.readouterr().out
     assert code in (0, 2) and "python" in out and "mathlib" in out
+
+
+def test_toolchain_listed_by_elan_counts_as_installed(tmp_path, monkeypatch):
+    import subprocess
+    from types import SimpleNamespace
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: SimpleNamespace(stdout="leanprover/lean4:v4.34.1\n"))
+    rows = {r.name: r for r in diagnose(repo(tmp_path), which=lambda _: "elan")}
+    assert "installed" in rows["toolchain"].detail and "download" not in rows["toolchain"].detail
+
+
+def test_low_free_memory_alone_is_not_missing(tmp_path, monkeypatch):
+    from claimcert import doctor
+    monkeypatch.setattr(doctor, "memory_gb", lambda: (16.0, 1.0))
+    rows = {r.name: r for r in diagnose(repo(tmp_path), which=lambda _: None)}
+    assert rows["memory"].ok and "1.0 GB free" in rows["memory"].detail
+    monkeypatch.setattr(doctor, "memory_gb", lambda: (4.0, 3.0))
+    rows = {r.name: r for r in diagnose(tmp_path, which=lambda _: None)}
+    assert not rows["memory"].ok
+
+
+def test_doctor_names_the_verifier(tmp_path):
+    rows = {r.name: r for r in diagnose(repo(tmp_path), which=lambda _: None)}
+    assert rows["verifier"].ok is False and "claimcert setup" in rows["verifier"].detail

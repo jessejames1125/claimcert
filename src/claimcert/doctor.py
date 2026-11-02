@@ -9,7 +9,10 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 
+from .leanrun import VERIFY, verify_exe
+
 CHECK_PEAK_GB = 4.6  # measured: one check, Lean with Mathlib imported
+MIN_TOTAL_GB = 8.0
 LEAN_DISK_GB = 15.0  # measured: lean/.lake after setup on a clean copy, plus room for the download
 
 
@@ -61,7 +64,8 @@ def diagnose(root: Path, which=shutil.which) -> list[Row]:
     pin = (lean / "lean-toolchain").read_text(encoding="utf-8").strip() if (lean / "lean-toolchain").is_file() else "?"
     if elan:
         listed = subprocess.run([elan, "toolchain", "list"], capture_output=True, text=True, cwd=root.anchor)
-        have = pin.replace("/", "--").replace(":", "---") in listed.stdout
+        # elan lists "leanprover/lean4:v4.34.1"; older versions print the folder name instead
+        have = pin in listed.stdout or pin.replace("/", "--").replace(":", "---") in listed.stdout
         rows.append(Row("toolchain", True, f"{pin} {'installed' if have else 'will download on first use, about 500 MB'}",
                         "kernel"))
     build = lean / ".lake" / "packages"
@@ -70,11 +74,13 @@ def diagnose(root: Path, which=shutil.which) -> list[Row]:
     rows.append(_exists(build / "leancert" / ".lake" / "build" / "lib" / "lean" / "LeanCert" / "Tactic.olean",
                         "leancert", missing))
     rows.append(_exists(lean / ".lake" / "build" / "lib" / "lean" / "ClaimCert.olean", "claimcert lean", missing))
+    rows.append(_exists(verify_exe(lean), "verifier", missing))
     mem = memory_gb()
     if mem:
         total, avail = mem
-        rows.append(Row("memory", avail >= CHECK_PEAK_GB, f"{avail:.1f} GB free of {total:.1f}; "
-                        f"one check peaks near {CHECK_PEAK_GB} GB", "kernel"))
+        # A property of the machine, not of this moment: free memory is shown so the reader can act on it.
+        rows.append(Row("memory", total >= MIN_TOTAL_GB, f"{avail:.1f} GB free of {total:.1f}; one check peaks "
+                        f"near {CHECK_PEAK_GB} GB, so close other heavy programs if free is below that", "kernel"))
     free = shutil.disk_usage(root).free / 2**30
     built = (build / "mathlib" / ".lake" / "build" / "lib" / "lean" / "Mathlib.olean").is_file()
     rows.append(Row("disk", built or free >= LEAN_DISK_GB, f"{free:.0f} GB free; setup needs about {LEAN_DISK_GB:.0f} GB",
@@ -96,12 +102,12 @@ def report(rows: list[Row]) -> tuple[str, int]:
 
 
 def setup(root: Path, lake: str = "lake") -> int:
-    """Download the Mathlib build cache, then build LeanCert and the claimcert Lean library."""
+    """Download the Mathlib build cache, then build LeanCert, the claimcert Lean library and the verifier."""
     exe = shutil.which(lake)
     if exe is None:
         print(f"{lake} not found; install elan from https://lean-lang.org/install/", file=sys.stderr)
         return 2
-    for step in (["exe", "cache", "get"], ["build", "ClaimCert"]):
+    for step in (["exe", "cache", "get"], ["build", "ClaimCert", VERIFY]):
         started = time.perf_counter()
         print(f"$ lake {' '.join(step)}", flush=True)
         code = subprocess.run([exe, *step], cwd=root / "lean").returncode
