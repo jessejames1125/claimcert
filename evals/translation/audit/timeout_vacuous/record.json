@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "06061e5c81c0327b757900d80b04873d1627ba3e9b7fce0dbb70b7fe6e17b39e",
+  "match": false,
+  "by": "agent",
+  "notes": "The formal statement is vacuous (hypotheses t \u2265 40 and t \u2264 30 contradict each other) and uses 40 and 30 instead of the intent's 1 and 5, so proving it says nothing about timeouts between 1 and 5 seconds.",
+  "date": "2026-11-02"
+}

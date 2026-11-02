@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "a86a8eda88057c6e9d8e11d96e12e3165c3b405489489318feb4c93dc88d9306",
+  "match": false,
+  "by": "agent",
+  "notes": "The intent covers x from 0 to 2, but the formal statement only covers x from 0 to 1, which is a narrower range and so a weaker claim.",
+  "date": "2026-11-02"
+}

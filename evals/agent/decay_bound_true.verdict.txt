@@ -1,0 +1,9 @@
+decay_bound_true: PASS (bound) at stage kernel
+  intent: For every non-negative x, exp(-x) is at most 1 / (1 + x).
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    condition dom_c1: x ≥ (0 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 104.3 s

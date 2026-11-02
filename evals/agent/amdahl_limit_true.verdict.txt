@@ -1,0 +1,10 @@
+amdahl_limit_true: PASS (bound) at stage kernel
+  intent: A job with a 5% or larger serial fraction never speeds up more than 20 times, however many workers it gets.
+  assumptions used:
+    LAW    amdahl  (source: Amdahl's law: G. Amdahl, AFIPS Conference Proceedings 30, 1967)
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    interval  dom_f: f ∈ Set.Icc (1 / 20 : ℝ) (1 : ℝ)
+    domain    dom_n: 0 < n
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 87.22 s

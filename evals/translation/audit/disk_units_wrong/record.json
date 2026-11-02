@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "312fa818bd2f1b55b8124e071a1266a811c6bce54e2daf73bf9f2e3161a8f153",
+  "match": false,
+  "by": "agent",
+  "notes": "The intent compares 10 GiB (\u224810.74 GB) against 10.5 GB, which is false, since 10 GiB exceeds 10.5 GB. The formal statement instead checks 8\u00d710\u00b9\u2070 \u2264 8.4\u00d710\u00b9\u2070, which is true. Its numbers correspond to 10 GB and 10.5 GB in bits, so it drops the GiB-to-GB conversion that makes the intent's claim fail.",
+  "date": "2026-11-02"
+}

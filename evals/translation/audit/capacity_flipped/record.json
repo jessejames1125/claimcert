@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "6f2fd83529cfa7c002879eac73acc171f27d8dd99eda9683677847f3d6ed0bd4",
+  "match": false,
+  "by": "agent",
+  "notes": "The formal statement is only the trivial implication \"r \u2264 200 \u2192 r \u2264 300\", which is a different direction and bound from the intent's \"service handles at least 300 requests per second\" (r \u2265 300).",
+  "date": "2026-11-02"
+}

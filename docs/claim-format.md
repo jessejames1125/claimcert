@@ -62,4 +62,4 @@ claimcert check my_claim.yaml
 claimcert audit-agent my_claim.yaml --agent "your-agent-command"
 ```
 
-Add a `[[lean_lib]]` entry to `lean/lakefile.toml` for your assumption module. An agent command reads the prompt on stdin and writes the reply to stdout. For Claude Code with its tools off: `claude -p --model sonnet --setting-sources project --strict-mcp-config --permission-mode dontAsk`.
+Add a `[[lean_lib]]` entry to `lean/lakefile.toml` for your assumption module. An agent command reads the prompt on stdin and writes the reply to stdout. For Claude Code: `claude -p --safe-mode --model sonnet --strict-mcp-config --permission-mode dontAsk`. The `--safe-mode` flag matters: without it Claude Code adds your own CLAUDE.md files to the prompt, and the agent's reply is saved next to the claim, so private notes can end up in the repo.

@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "agent": "claude -p --safe-mode --model sonnet --strict-mcp-config --permission-mode dontAsk",
+  "runs": 1,
+  "max_attempts": 2,
+  "rows": {
+    "amdahl_limit_planted": {
+      "truth": "false",
+      "attempts": [
+        {
+          "status": "GAVE-UP",
+          "stage": "agent"
+        }
+      ],
+      "final": "NO-PROOF",
+      "agent_said": "UNPROVABLE: taking f = 1/20 and n = 100 gives S = 1/(0.05 + 0.0095) \u2248 16.8, which is more than 15 (S can approach 20)."
+    },
+    "amdahl_limit_true": {
+      "truth": "true",
+      "attempts": [
+        {
+          "status": "PASS",
+          "stage": "kernel"
+        }
+      ],
+      "final": "PASS",
+      "agent_said": null
+    },
+    "decay_bound_true": {
+      "truth": "true",
+      "attempts": [
+        {
+          "status": "PASS",
+          "stage": "kernel"
+        }
+      ],
+      "final": "PASS",
+      "agent_said": null
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "1ab5d8e1b34ee713b77c11e3ad08021e9c78a505b1a7b6d1390e7cfec69b4929",
+  "match": false,
+  "by": "agent",
+  "notes": "The formal statement is a tautology (B \u2264 1 \u2192 B \u2264 1) that assumes the very bound it concludes, so proving it says nothing about every shipped retry policy staying under its 1 second budget.",
+  "date": "2026-11-02"
+}

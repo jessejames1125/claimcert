@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "f0957174913d68b5ff944a3c34a6516c775013df37ca38a6cfe8e03ebfb83911",
+  "match": true,
+  "by": "agent",
+  "notes": "The formal statement says that for all real x in [0,1], x \u2212 sin x \u2264 1/5, which is the intent exactly (0.2 = 1/5). The claim is also true, since x \u2212 sin x \u2264 x\u00b3/6 \u2264 1/6 < 0.2 on that interval.",
+  "date": "2026-11-02"
+}

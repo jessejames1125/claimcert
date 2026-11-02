@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "4511ccc7068aec5ba6c351827a5365444a2073265646b1b557dc0328cca5b1b9",
+  "match": true,
+  "by": "agent",
+  "notes": "The formal statement (1 \u2264 t \u2264 30 implies t \u2264 40) says exactly what the intent says, and the missing unit on `t` doesn't change the claim.",
+  "date": "2026-11-02"
+}

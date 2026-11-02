@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "ba4b1331e6773fee3a6518b8404c08b6bd33b356b4548a7f155fdf5330664f96",
+  "match": false,
+  "by": "agent",
+  "notes": "The intent says a 10 GiB file fits in 11 GB, but the formal statement compares 80 GiB (80 \u00d7 2\u00b3\u2070 bytes) to 88 GB (88 \u00d7 10\u2079), so the numbers differ by a factor of 8 even though the ratio happens to hold.",
+  "date": "2026-11-02"
+}

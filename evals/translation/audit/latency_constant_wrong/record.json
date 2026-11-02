@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "d7ba784281baffa81f0723c01ce582bda6216e51cbadf5c29903a1c175cfc642",
+  "match": false,
+  "by": "agent",
+  "notes": "The intent is a 100 ms budget (0.1 s), but the formal statement assumes l \u2264 0.15 and concludes only l \u2264 1, which uses the wrong bound (150 ms) and a much weaker conclusion (1 s) than the stated budget.",
+  "date": "2026-11-02"
+}

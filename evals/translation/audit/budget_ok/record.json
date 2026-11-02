@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "1d6d790a4cff4a618780f0feba59329f009c6525e7a69bed8278a510c7aa637a",
+  "match": false,
+  "by": "agent",
+  "notes": "The intent fixes the wait at at most 200 ms (a unit conversion to 0.2 s) and concludes a 1 second total, while the formal statement is an abstract real `w \u2264 1/5` with no units, so it never states the 200 ms \u2194 1/5 s link, though the arithmetic `5w \u2264 1` is correct under that implicit reading.",
+  "date": "2026-11-02"
+}

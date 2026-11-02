@@ -1,0 +1,7 @@
+{
+  "audit_sha256": "e3cf63e1caccaa86ebc6d996ea3275aaafdb8c4c019cc291f496b372182661a9",
+  "match": true,
+  "by": "agent",
+  "notes": "The intent says a rate capped at 200/s never exceeds 300/s, and the formal statement proves that `r \u2264 200` implies `r \u2264 300` for real `r`, which is the same claim.",
+  "date": "2026-11-02"
+}
