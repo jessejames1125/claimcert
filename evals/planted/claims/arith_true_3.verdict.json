@@ -1,0 +1,65 @@
+{
+  "claim": "arith_true_3",
+  "type": "floor",
+  "intent": "3 decades need at least 13.67 cm",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [
+      "bm_max_density",
+      "bm_max_sigma"
+    ],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {
+    "bm_max_density": {
+      "kind": "FIT",
+      "source": "UNSOURCED (synthetic benchmark value)",
+      "range": "synthetic survey value",
+      "date": "2026-10-13",
+      "produced_by": null
+    },
+    "bm_max_sigma": {
+      "kind": "FIT",
+      "source": "UNSOURCED (synthetic benchmark value)",
+      "range": "synthetic survey value",
+      "date": "2026-10-13",
+      "produced_by": null
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_n",
+      "kind": "domain",
+      "statement": "0 < n",
+      "used": true
+    },
+    {
+      "name": "dom_s",
+      "kind": "domain",
+      "statement": "0 < s",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 79.65,
+  "recorded": {
+    "claim_sha256": "b447eb7f1ceee5ae7ff716a1a64d1d7b192f883f55cc08b2ae3513fc61c17444",
+    "lean_sha256": "e9c171303c19c6e4fbc5c76b8b8817ef9fa43dde1e6d024020970284561bbb44",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

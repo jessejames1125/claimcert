@@ -4,4 +4,4 @@ neutron_floor_planted: FAIL (floor) at stage elaboration
           The statement is false.
           Certified counterexample: opposite comparison `Real.log 10 < 1 / 40 * (177000000000000000000000000000 * (3 / 5000000000000000000000000000))`
           LeanCert certified this opposite comparison with a checked point-enclosure proof.
-  audit: UNAUDITED   lean: 49.15 s
+  audit: UNAUDITED   lean: 72.76 s

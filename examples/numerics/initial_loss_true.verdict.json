@@ -20,14 +20,14 @@
     "propext"
   ],
   "audit": "UNAUDITED",
-  "lean_seconds": 42.67,
+  "lean_seconds": 264.89,
   "recorded": {
     "claim_sha256": "08af04e557caab2d865f7ecd665f949e1ac6ea3cbd3bf1318eb63aea46f96c14",
     "lean_sha256": "b163a40aafe6d13c59ef66ef56f5aa43f1fe53204f9f4599bdb06b4cd5c29153",
     "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
     "toolchain": "leanprover/lean4:v4.34.1",
     "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
-    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
     "claimcert": "0.1.0",
     "date": "2026-11-02"
   }

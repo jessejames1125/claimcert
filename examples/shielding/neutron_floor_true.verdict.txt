@@ -12,4 +12,4 @@ neutron_floor_true: PASS (floor) at stage kernel
     domain    dom_phi0: 0 < phi0
     condition dom_c1: phi ≤ (phi0 / (10 : ℝ))
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 38.21 s
+  audit: UNAUDITED   lean: 75.68 s

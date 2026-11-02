@@ -1,0 +1,5 @@
+geom_planted_3: FAIL (fits_in_sphere) at stage elaboration
+  intent: planted: r 2 cm < R 2.5 cm radially, but the corner with h 2 cm is outside
+  reason: geom_planted_3.lean:10:77: error: unsolved goals
+          ⊢ False
+  audit: UNAUDITED   lean: 46.28 s

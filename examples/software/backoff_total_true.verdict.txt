@@ -5,4 +5,4 @@ backoff_total_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 29.44 s
+  audit: UNAUDITED   lean: 92.8 s

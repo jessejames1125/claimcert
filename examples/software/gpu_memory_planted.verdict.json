@@ -4,7 +4,7 @@
   "intent": "A model with 7 billion 16-bit parameters fits in 13 GiB of GPU memory.",
   "status": "FAIL",
   "stage": "elaboration",
-  "reason": "gpu_memory_planted.lean:11:58: error: unsolved goals\n⊢ False\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"gpu_memory_planted\"}\n",
+  "reason": "gpu_memory_planted.lean:11:58: error: unsolved goals\n⊢ False\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"gpu_memory_planted\"}\n",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -16,14 +16,14 @@
   "premises": [],
   "axioms": [],
   "audit": "UNAUDITED",
-  "lean_seconds": 44.65,
+  "lean_seconds": 53.67,
   "recorded": {
     "claim_sha256": "32bf498491e17437ba9622cb2565f934a752399d4b1da2b75ad260e1fa40d3e8",
     "lean_sha256": "83eaec3ae1f68fc37bbb119cc25f67efba73e5e3d77f3a002623401ee184864f",
     "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
     "toolchain": "leanprover/lean4:v4.34.1",
     "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
-    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
     "claimcert": "0.1.0",
     "date": "2026-11-02"
   }

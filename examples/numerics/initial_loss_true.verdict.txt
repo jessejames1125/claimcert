@@ -5,4 +5,4 @@ initial_loss_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 42.67 s
+  audit: UNAUDITED   lean: 264.89 s

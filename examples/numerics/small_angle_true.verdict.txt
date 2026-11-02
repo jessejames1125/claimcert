@@ -1,5 +1,9 @@
-small_angle_true: FAIL (bound) at stage elaboration
+small_angle_true: PASS (bound) at stage kernel
   intent: For angles up to 0.1 radians, sin x is within 0.0002 of x.
-  reason: small_angle_true.lean:14:4: error: LeanCert recognized a univariate interval bound, but no strategy proved it within cost budget 6 (spent 5).
-          Run `leancert?` on the same goal for the attempted strategies and detailed next steps.
-  audit: UNAUDITED   lean: 46.72 s
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    interval  dom_x: x ∈ Set.Icc (0 : ℝ) (1 / 10 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 74.73 s

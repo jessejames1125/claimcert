@@ -1,0 +1,30 @@
+{
+  "claim": "range_planted_4",
+  "type": "bound",
+  "intent": "planted: fit used outside [1, 6]; y <= 6.5 for x in [0.5, 1.5]",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "range_planted_4.lean:14:47: error: linarith failed to find a contradiction\nx y : ℝ\ndom_x : x ∈ Set.Icc (1 / 2) (3 / 2)\nh_bm_fit_linear : x ∈ Set.Icc 1 6 → y ≤ 3 * x + 2\na✝ : x < 1\n⊢ False\nfailed\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"x\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"y\",\"prop\":false,\"used\":true},{\"head\":\"Membership.mem\",\"name\":\"dom_x\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertBench.A_bm_fit_linear\",\"name\":\"h_bm_fit_linear\",\"prop\":true,\"used\":true}],\"theorem\":\"range_planted_4\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 28.17,
+  "recorded": {
+    "claim_sha256": "a718e345a63060a5c6f6f85964c431bbec746f2d326baa568c21a715b106f4a7",
+    "lean_sha256": "f0d08e4eb4db8b9dcafe5e731d1650d549a24aa2bce0e890f02b0765567942f5",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

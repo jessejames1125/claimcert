@@ -1,0 +1,30 @@
+{
+  "claim": "unit_planted_3",
+  "type": "floor",
+  "intent": "planted unit error: 0.1367 s",
+  "status": "FAIL",
+  "stage": "dimension",
+  "reason": "cannot compare L^1 with T^1",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 0.0,
+  "recorded": {
+    "claim_sha256": "495e367863b3b58a4e98b84a010cee4bc0ea04a771b30cbe2f14d5fc7e0c6b80",
+    "lean_sha256": null,
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

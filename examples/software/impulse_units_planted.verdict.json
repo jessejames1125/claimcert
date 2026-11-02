@@ -4,7 +4,7 @@
   "intent": "A burn logged as 4.45 lbf s stays under a 5 N s limit.",
   "status": "FAIL",
   "stage": "elaboration",
-  "reason": "impulse_units_planted.lean:11:56: error: unsolved goals\n⊢ False\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"impulse_units_planted\"}\n",
+  "reason": "impulse_units_planted.lean:11:56: error: unsolved goals\n⊢ False\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"impulse_units_planted\"}\n",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -16,14 +16,14 @@
   "premises": [],
   "axioms": [],
   "audit": "UNAUDITED",
-  "lean_seconds": 34.93,
+  "lean_seconds": 49.07,
   "recorded": {
     "claim_sha256": "3fe22350a1a171bd9e4cf9719e8320294cc34dcf1f9aa212f837f1bd5dc9a41a",
     "lean_sha256": "74950a4a3ddb8e743bf72f73401468bacaa10076923797fb00e4d752e9cede19",
     "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
     "toolchain": "leanprover/lean4:v4.34.1",
     "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
-    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
     "claimcert": "0.1.0",
     "date": "2026-11-02"
   }

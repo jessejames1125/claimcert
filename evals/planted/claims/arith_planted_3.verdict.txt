@@ -1,0 +1,7 @@
+arith_planted_3: FAIL (floor) at stage elaboration
+  intent: planted: floor 5 % above the true 3-decade value
+  reason: arith_planted_3.lean:20:4: error: LeanCert recognized: closed numerical comparison
+          The statement is false.
+          Certified counterexample: opposite comparison `3 * Real.log 10 < 1451 / 10000 * (100000000000000000000000000000 * (1 / 2000000000000000000000000000))`
+          LeanCert certified this opposite comparison with a checked point-enclosure proof.
+  audit: UNAUDITED   lean: 53.74 s

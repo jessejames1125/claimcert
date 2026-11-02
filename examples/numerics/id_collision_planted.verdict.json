@@ -4,7 +4,7 @@
   "intent": "With one billion random 64-bit request IDs, the chance of any collision is at most 0.1%.",
   "status": "FAIL",
   "stage": "elaboration",
-  "reason": "id_collision_planted.lean:15:2: error: linarith failed to find a contradiction\nP : ℝ\nh_birthday_union : P ≤ 1953124998046875 / 72057594037927936\na✝ : 1 / 1000 < P\n⊢ False\nfailed\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"P\",\"prop\":false,\"used\":true},{\"head\":\"ClaimCertExamples.A_birthday_union\",\"name\":\"h_birthday_union\",\"prop\":true,\"used\":true}],\"theorem\":\"id_collision_planted\"}\n",
+  "reason": "id_collision_planted.lean:15:2: error: linarith failed to find a contradiction\nP : ℝ\nh_birthday_union : P ≤ 1953124998046875 / 72057594037927936\na✝ : 1 / 1000 < P\n⊢ False\nfailed\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"P\",\"prop\":false,\"used\":true},{\"head\":\"ClaimCertExamples.A_birthday_union\",\"name\":\"h_birthday_union\",\"prop\":true,\"used\":true}],\"theorem\":\"id_collision_planted\"}\n",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -16,14 +16,14 @@
   "premises": [],
   "axioms": [],
   "audit": "UNAUDITED",
-  "lean_seconds": 41.6,
+  "lean_seconds": 91.39,
   "recorded": {
     "claim_sha256": "6d58df001b7c195fe22b9e91b8e425251aefb6457f8bbbd1f38addb65eecaad5",
     "lean_sha256": "a4849cf2e96963e204f99b77b0c6bb8c6817d201cf76d021a77c31360462efaf",
     "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
     "toolchain": "leanprover/lean4:v4.34.1",
     "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
-    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
     "claimcert": "0.1.0",
     "date": "2026-11-02"
   }

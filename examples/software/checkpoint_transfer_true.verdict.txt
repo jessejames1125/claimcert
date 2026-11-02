@@ -5,4 +5,4 @@ checkpoint_transfer_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 38.23 s
+  audit: UNAUDITED   lean: 111.68 s

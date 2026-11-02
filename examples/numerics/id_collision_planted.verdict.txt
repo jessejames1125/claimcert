@@ -6,4 +6,4 @@ id_collision_planted: FAIL (bound) at stage elaboration
           a✝ : 1 / 1000 < P
           ⊢ False
           failed
-  audit: UNAUDITED   lean: 41.6 s
+  audit: UNAUDITED   lean: 91.39 s

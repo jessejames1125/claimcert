@@ -5,4 +5,4 @@ gpu_memory_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 33.3 s
+  audit: UNAUDITED   lean: 100.06 s

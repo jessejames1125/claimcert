@@ -1,0 +1,9 @@
+range_true_2: PASS (bound) at stage kernel
+  intent: y <= 20 for x in [1, 6]
+  assumptions used:
+    FIT    bm_fit_linear  (source: UNSOURCED (synthetic benchmark fit); range: x in [1, 6])
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    interval  dom_x: x ∈ Set.Icc (1 : ℝ) (6 : ℝ)
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 81.56 s

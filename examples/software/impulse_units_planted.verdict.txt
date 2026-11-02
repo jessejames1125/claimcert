@@ -2,4 +2,4 @@ impulse_units_planted: FAIL (point) at stage elaboration
   intent: A burn logged as 4.45 lbf s stays under a 5 N s limit.
   reason: impulse_units_planted.lean:11:56: error: unsolved goals
           ⊢ False
-  audit: UNAUDITED   lean: 34.93 s
+  audit: UNAUDITED   lean: 49.07 s

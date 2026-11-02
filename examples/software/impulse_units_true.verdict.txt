@@ -5,4 +5,4 @@ impulse_units_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 34.38 s
+  audit: UNAUDITED   lean: 147.23 s

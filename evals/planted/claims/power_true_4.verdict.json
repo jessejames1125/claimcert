@@ -1,0 +1,70 @@
+{
+  "claim": "power_true_4",
+  "type": "bound",
+  "intent": "net power at least 100 kW",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [
+      "bm_power_balance"
+    ],
+    "FIT": [
+      "bm_source_min"
+    ],
+    "TECH": [
+      "bm_loss_b",
+      "bm_loss_c"
+    ],
+    "NUMBER": []
+  },
+  "details": {
+    "bm_power_balance": {
+      "kind": "LAW",
+      "source": "energy conservation (synthetic benchmark)",
+      "range": null,
+      "date": null,
+      "produced_by": null
+    },
+    "bm_source_min": {
+      "kind": "FIT",
+      "source": "UNSOURCED (synthetic benchmark value)",
+      "range": "synthetic",
+      "date": "2026-10-13",
+      "produced_by": null
+    },
+    "bm_loss_b": {
+      "kind": "TECH",
+      "source": "UNSOURCED (synthetic benchmark value)",
+      "range": null,
+      "date": "2026-10-13",
+      "produced_by": null
+    },
+    "bm_loss_c": {
+      "kind": "TECH",
+      "source": "UNSOURCED (synthetic benchmark value)",
+      "range": null,
+      "date": "2026-10-13",
+      "produced_by": null
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 141.96,
+  "recorded": {
+    "claim_sha256": "0327e28ccaf73f57efbafcc26480035a8be99d49b299004512713eb49f52d43d",
+    "lean_sha256": "52ccbef445f6f2e3dab45d1b004ed691c1d4960731d0a2aef34a02fbee42f897",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

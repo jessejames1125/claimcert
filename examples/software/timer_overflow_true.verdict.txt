@@ -5,4 +5,4 @@ timer_overflow_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 34.99 s
+  audit: UNAUDITED   lean: 70.39 s

@@ -4,7 +4,7 @@
   "intent": "Five retries that double from 100 ms wait under 3 seconds in total.",
   "status": "FAIL",
   "stage": "elaboration",
-  "reason": "backoff_total_planted.lean:12:91: error: unsolved goals\n⊢ False\nCCREPORT <nonce> {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"backoff_total_planted\"}\n",
+  "reason": "backoff_total_planted.lean:12:91: error: unsolved goals\n⊢ False\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"backoff_total_planted\"}\n",
   "assumptions": {
     "LAW": [],
     "FIT": [],
@@ -16,14 +16,14 @@
   "premises": [],
   "axioms": [],
   "audit": "UNAUDITED",
-  "lean_seconds": 30.83,
+  "lean_seconds": 55.26,
   "recorded": {
     "claim_sha256": "c314cfa5b17edbef698ee1bfca000a60e035b71c634ecade6a68030743383fc2",
     "lean_sha256": "53817a509340bb41d9351fd1b32c84060cbe51b1e8120eaf58225b899c308584",
     "assumptions_sha256": "f99ab9411c4d43ca49be9ec20b87f6220414d952c3d135347fa183ed6ffe67f2",
     "toolchain": "leanprover/lean4:v4.34.1",
     "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
-    "core_sha256": "e6c012c2e445088bcd4d26284ad39a1a92969ac990fd3abe08439a2eac79ce45",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
     "claimcert": "0.1.0",
     "date": "2026-11-02"
   }

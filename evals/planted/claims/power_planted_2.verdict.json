@@ -1,0 +1,30 @@
+{
+  "claim": "power_planted_2",
+  "type": "bound",
+  "intent": "planted: a loss term dropped; net power at least 700 kW",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "power_planted_2.lean:17:2: error: linarith failed to find a contradiction\nPnet Ps Pb Pc : ℝ\nh_bm_power_balance : Pnet = Ps - Pb - Pc\nh_bm_source_min : Ps ≥ 1000000\nh_bm_loss_b : Pb ≤ 200000\nh_bm_loss_c : Pc ≤ 300000\na✝ : Pnet < 700000\n⊢ False\nfailed\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"Pnet\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"Ps\",\"prop\":false,\"used\":false},{\"head\":\"Real\",\"name\":\"Pb\",\"prop\":false,\"used\":false},{\"head\":\"Real\",\"name\":\"Pc\",\"prop\":false,\"used\":false},{\"head\":\"ClaimCertBench.A_bm_power_balance\",\"name\":\"h_bm_power_balance\",\"prop\":true,\"used\":false},{\"head\":\"ClaimCertBench.A_bm_source_min\",\"name\":\"h_bm_source_min\",\"prop\":true,\"used\":false},{\"head\":\"ClaimCertBench.A_bm_loss_b\",\"name\":\"h_bm_loss_b\",\"prop\":true,\"used\":false},{\"head\":\"ClaimCertBench.A_bm_loss_c\",\"name\":\"h_bm_loss_c\",\"prop\":true,\"used\":false}],\"theorem\":\"power_planted_2\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 41.9,
+  "recorded": {
+    "claim_sha256": "583f5bcf98d28450fde290a07a49d93a7f8404c0d21c00ef1ddb56ea5dac78b5",
+    "lean_sha256": "d1f36bed140f5281409bc3575c4ff788cd925fe9f49ad43a4572fa760f0023d1",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

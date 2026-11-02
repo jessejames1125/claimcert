@@ -1,0 +1,30 @@
+{
+  "claim": "geom_planted_4",
+  "type": "fits_in_sphere",
+  "intent": "planted: r 4 cm < R 4.1 cm radially, but the corner with h 1 cm is outside",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "geom_planted_4.lean:10:81: error: unsolved goals\n⊢ False\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[],\"theorem\":\"geom_planted_4\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 73.98,
+  "recorded": {
+    "claim_sha256": "e33211901f7f79b9d22b738129373500f50ef8b67d8987d401b44c2ec173451b",
+    "lean_sha256": "692c476e75aac0fb3b982009eda2ad02f10f5bda97719ec3bc49b83c7aca4239",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

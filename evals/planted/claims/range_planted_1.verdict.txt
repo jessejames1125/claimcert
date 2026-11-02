@@ -1,0 +1,10 @@
+range_planted_1: FAIL (bound) at stage elaboration
+  intent: planted: fit used outside [1, 6]; y <= 26 for x in [5, 8]
+  reason: range_planted_1.lean:14:70: error: linarith failed to find a contradiction
+          x y : ℝ
+          dom_x : x ∈ Set.Icc 5 8
+          h_bm_fit_linear : x ∈ Set.Icc 1 6 → y ≤ 3 * x + 2
+          a✝ : 6 < x
+          ⊢ False
+          failed
+  audit: UNAUDITED   lean: 117.58 s

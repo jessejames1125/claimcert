@@ -1,0 +1,12 @@
+power_planted_1: FAIL (bound) at stage elaboration
+  intent: planted: a loss term dropped; net power at least 800 kW
+  reason: power_planted_1.lean:17:2: error: linarith failed to find a contradiction
+          Pnet Ps Pb Pc : ℝ
+          h_bm_power_balance : Pnet = Ps - Pb - Pc
+          h_bm_source_min : Ps ≥ 1000000
+          h_bm_loss_b : Pb ≤ 200000
+          h_bm_loss_c : Pc ≤ 300000
+          a✝ : Pnet < 800000
+          ⊢ False
+          failed
+  audit: UNAUDITED   lean: 49.33 s

@@ -5,4 +5,4 @@ float_safe_integer_true: PASS (point) at stage kernel
   unused, dropped: none
   premises from the claim: none
   axioms: Classical.choice, Quot.sound, propext
-  audit: UNAUDITED   lean: 33.68 s
+  audit: UNAUDITED   lean: 245.65 s

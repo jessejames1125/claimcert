@@ -1,0 +1,51 @@
+{
+  "claim": "range_true_4",
+  "type": "bound",
+  "intent": "y <= 20 for x in [5, 6]",
+  "status": "PASS",
+  "stage": "kernel",
+  "reason": "kernel-checked",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [
+      "bm_fit_linear"
+    ],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {
+    "bm_fit_linear": {
+      "kind": "FIT",
+      "source": "UNSOURCED (synthetic benchmark fit)",
+      "range": "x in [1, 6]",
+      "date": "2026-10-13",
+      "produced_by": null
+    }
+  },
+  "unused_assumptions": [],
+  "premises": [
+    {
+      "name": "dom_x",
+      "kind": "interval",
+      "statement": "x ∈ Set.Icc (5 : ℝ) (6 : ℝ)",
+      "used": true
+    }
+  ],
+  "axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "audit": "UNAUDITED",
+  "lean_seconds": 68.53,
+  "recorded": {
+    "claim_sha256": "67ecbe7fe7b3b2969cdb2b9b01cf988aead836f139007bf619ce9b0703f5ae78",
+    "lean_sha256": "6310f79dc94e37024cafff46f90b27702bf279a081de509abc0af2d27115ef0b",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

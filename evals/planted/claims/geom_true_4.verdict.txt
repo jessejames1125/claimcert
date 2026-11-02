@@ -1,0 +1,8 @@
+geom_true_4: PASS (fits_in_sphere) at stage kernel
+  intent: cylinder r 7 cm, h 5 cm fits in R 8.7 cm
+  assumptions used:
+    none
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 57.07 s

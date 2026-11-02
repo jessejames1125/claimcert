@@ -1,0 +1,30 @@
+{
+  "claim": "arith_planted_3",
+  "type": "floor",
+  "intent": "planted: floor 5 % above the true 3-decade value",
+  "status": "FAIL",
+  "stage": "elaboration",
+  "reason": "arith_planted_3.lean:20:4: error: LeanCert recognized: closed numerical comparison\n\nThe statement is false.\n\nCertified counterexample: opposite comparison `3 * Real.log 10 < 1451 / 10000 * (100000000000000000000000000000 * (1 / 2000000000000000000000000000))`\nLeanCert certified this opposite comparison with a checked point-enclosure proof.\nCCREPORT - {\"axioms\":[\"propext\",\"sorryAx\",\"Classical.choice\",\"Quot.sound\"],\"binders\":[{\"head\":\"Real\",\"name\":\"n\",\"prop\":false,\"used\":true},{\"head\":\"Real\",\"name\":\"s\",\"prop\":false,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_n\",\"prop\":true,\"used\":true},{\"head\":\"LT.lt\",\"name\":\"dom_s\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertBench.A_bm_max_density\",\"name\":\"h_bm_max_density\",\"prop\":true,\"used\":true},{\"head\":\"ClaimCertBench.A_bm_max_sigma\",\"name\":\"h_bm_max_sigma\",\"prop\":true,\"used\":true}],\"theorem\":\"arith_planted_3\"}\n",
+  "assumptions": {
+    "LAW": [],
+    "FIT": [],
+    "TECH": [],
+    "NUMBER": []
+  },
+  "details": {},
+  "unused_assumptions": [],
+  "premises": [],
+  "axioms": [],
+  "audit": "UNAUDITED",
+  "lean_seconds": 53.74,
+  "recorded": {
+    "claim_sha256": "09dbc34196dbca400c66161ab678be6da1e2ba6c03510f755cecc33a01cdac1c",
+    "lean_sha256": "60e028108cd988f6596b91859df70957534f463c992c47500d4233f0fdde91b1",
+    "assumptions_sha256": "72a5623b978f93f6492348bb6f7ee6b33c5d1880d14d9f6ba81c7115c547b7c9",
+    "toolchain": "leanprover/lean4:v4.34.1",
+    "manifest_sha256": "76b503bca79c356973f19d100a4eb99a21bcc5fe4ec66445ab3103e7f5eb6640",
+    "core_sha256": "d262d585b88dca9fa151060eadcd0ecca7c2090ef0fc81eaf564c1600ce3a6aa",
+    "claimcert": "0.1.0",
+    "date": "2026-11-02"
+  }
+}

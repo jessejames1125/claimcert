@@ -2,4 +2,4 @@ float_safe_integer_planted: FAIL (point) at stage elaboration
   intent: A double holds every integer up to 1e16 exactly, since 1e16 is at most 2^53.
   reason: float_safe_integer_planted.lean:11:48: error: unsolved goals
           ⊢ False
-  audit: UNAUDITED   lean: 28.27 s
+  audit: UNAUDITED   lean: 627.59 s

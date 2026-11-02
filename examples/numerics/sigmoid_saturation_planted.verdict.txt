@@ -4,4 +4,4 @@ sigmoid_saturation_planted: FAIL (bound) at stage elaboration
           The statement is false.
           Certified counterexample: (1572871/262144 (≈ 6.000026))
           At this point, the checked function value is approximately enclosed by [0.997527, 0.997527], which violates the requested comparison. The certificate uses exact rational endpoints.
-  audit: UNAUDITED   lean: 49.9 s
+  audit: UNAUDITED   lean: 102.15 s

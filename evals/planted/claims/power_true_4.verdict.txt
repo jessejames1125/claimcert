@@ -1,0 +1,11 @@
+power_true_4: PASS (bound) at stage kernel
+  intent: net power at least 100 kW
+  assumptions used:
+    LAW    bm_power_balance  (source: energy conservation (synthetic benchmark))
+    FIT    bm_source_min  (source: UNSOURCED (synthetic benchmark value); range: synthetic)
+    TECH   bm_loss_b  (source: UNSOURCED (synthetic benchmark value))
+    TECH   bm_loss_c  (source: UNSOURCED (synthetic benchmark value))
+  unused, dropped: none
+  premises from the claim: none
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 141.96 s

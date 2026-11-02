@@ -1,0 +1,260 @@
+{
+  "date": "2026-11-02",
+  "toolchain": "leanprover/lean4:v4.34.1",
+  "commit": "9d425990ff2db2900302c385f6f6287caf8926df",
+  "core_files_modified": false,
+  "runs": 1,
+  "wall_seconds": 2504,
+  "claims": 40,
+  "planted": 20,
+  "true": 20,
+  "planted_that_passed": 0,
+  "true_that_failed": 0,
+  "planted_failed_at_stage": {
+    "elaboration": 18,
+    "dimension": 2
+  },
+  "note": "planted errors were designed by the tool's author and sit in goal values, so a planted claim that fails mostly shows Lean is sound and the plumbing works. See evals/README.md.",
+  "rows": {
+    "arith_planted_1": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 293.16
+    },
+    "arith_planted_2": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 45.43
+    },
+    "arith_planted_3": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 53.74
+    },
+    "arith_planted_4": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 48.0
+    },
+    "arith_true_1": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 92.61
+    },
+    "arith_true_2": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 84.02
+    },
+    "arith_true_3": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 79.65
+    },
+    "arith_true_4": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 77.1
+    },
+    "geom_planted_1": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 49.39
+    },
+    "geom_planted_2": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 38.13
+    },
+    "geom_planted_3": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 46.28
+    },
+    "geom_planted_4": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 73.98
+    },
+    "geom_true_1": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 57.52
+    },
+    "geom_true_2": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 66.54
+    },
+    "geom_true_3": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 52.71
+    },
+    "geom_true_4": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 57.07
+    },
+    "power_planted_1": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 49.33
+    },
+    "power_planted_2": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 41.9
+    },
+    "power_planted_3": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 31.68
+    },
+    "power_planted_4": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 51.95
+    },
+    "power_true_1": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 49.49
+    },
+    "power_true_2": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 55.2
+    },
+    "power_true_3": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 110.69
+    },
+    "power_true_4": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 141.96
+    },
+    "range_planted_1": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 117.58
+    },
+    "range_planted_2": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 28.65
+    },
+    "range_planted_3": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 28.59
+    },
+    "range_planted_4": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 28.17
+    },
+    "range_true_1": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 45.34
+    },
+    "range_true_2": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 81.56
+    },
+    "range_true_3": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 59.62
+    },
+    "range_true_4": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 68.53
+    },
+    "unit_planted_1": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 40.06
+    },
+    "unit_planted_2": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "elaboration",
+      "seconds": 32.75
+    },
+    "unit_planted_3": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "dimension",
+      "seconds": 0.0
+    },
+    "unit_planted_4": {
+      "expected": "FAIL",
+      "status": "FAIL",
+      "stage": "dimension",
+      "seconds": 0.0
+    },
+    "unit_true_1": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 55.5
+    },
+    "unit_true_2": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 47.25
+    },
+    "unit_true_3": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 55.31
+    },
+    "unit_true_4": {
+      "expected": "PASS",
+      "status": "PASS",
+      "stage": "kernel",
+      "seconds": 58.12
+    }
+  }
+}

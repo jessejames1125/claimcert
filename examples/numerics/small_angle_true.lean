@@ -10,8 +10,12 @@ example : (ClaimCert.Dim.mk 0 0 0 0 0 0 0 0) = ClaimCert.Dim.one := by decide
 theorem small_angle_true (x : ℝ) (dom_x : x ∈ Set.Icc (0 : ℝ) (1 / 10 : ℝ)) :
     (x - (Real.sin x)) ≤ (1 / 5000 : ℝ) := by
 -- CC-END
-  have key : ∀ x ∈ Set.Icc (0 : ℝ) (1 / 10 : ℝ), x - Real.sin x ≤ (1 / 5000 : ℝ) := by
-    leancert
-  exact key x dom_x
+  obtain ⟨h0, h1⟩ := dom_x
+  -- Mathlib's Taylor bound: |sin x - (x - x^3/6)| <= |x|^4 * 5/96 for |x| <= 1
+  have hb := Real.sin_bound (x := x) (by rw [abs_le]; constructor <;> linarith)
+  rw [abs_of_nonneg h0] at hb
+  have h3 := pow_le_pow_left₀ h0 h1 3
+  have h4 := pow_le_pow_left₀ h0 h1 4
+  nlinarith [(abs_le.mp hb).1]
 
 #cc_report small_angle_true

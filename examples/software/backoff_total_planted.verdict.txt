@@ -2,4 +2,4 @@ backoff_total_planted: FAIL (point) at stage elaboration
   intent: Five retries that double from 100 ms wait under 3 seconds in total.
   reason: backoff_total_planted.lean:12:91: error: unsolved goals
           ⊢ False
-  audit: UNAUDITED   lean: 30.83 s
+  audit: UNAUDITED   lean: 55.26 s

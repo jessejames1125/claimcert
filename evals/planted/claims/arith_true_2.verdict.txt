@@ -1,0 +1,11 @@
+arith_true_2: PASS (floor) at stage kernel
+  intent: 2 decades need at least 9.11 cm
+  assumptions used:
+    FIT    bm_max_density  (source: UNSOURCED (synthetic benchmark value); range: synthetic survey value)
+    FIT    bm_max_sigma  (source: UNSOURCED (synthetic benchmark value); range: synthetic survey value)
+  unused, dropped: none
+  premises from the claim (domains and conditions, not in the registry):
+    domain    dom_n: 0 < n
+    domain    dom_s: 0 < s
+  axioms: Classical.choice, Quot.sound, propext
+  audit: UNAUDITED   lean: 84.02 s
